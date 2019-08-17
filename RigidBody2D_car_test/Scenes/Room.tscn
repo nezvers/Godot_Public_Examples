@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Room.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tire.tscn" type="PackedScene" id=3]
+
+[node name="Room" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D4" parent="walls" instance=ExtResource( 2 )]
+position = Vector2( 20, 350 )
+rotation = 1.5708
+scale = Vector2( 62.04, 1 )
+
+[node name="StaticBody2D3" parent="walls" instance=ExtResource( 2 )]
+position = Vector2( 1260, 330 )
+rotation = 1.5708
+scale = Vector2( 62.04, 1 )
+
+[node name="StaticBody2D2" parent="walls" instance=ExtResource( 2 )]
+position = Vector2( 640, 720 )
+scale = Vector2( 62.04, 1 )
+
+[node name="StaticBody2D" parent="walls" instance=ExtResource( 2 )]
+position = Vector2( 640, 0 )
+scale = Vector2( 62.04, 1 )
+
+[node name="Tire" parent="." instance=ExtResource( 3 )]
+position = Vector2( 400, 260 )
