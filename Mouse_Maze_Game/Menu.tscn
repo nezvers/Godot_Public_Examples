@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/Blip_Select.wav" type="AudioStream" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+next_scene = "res://Levels/Level0.tscn"
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0196078, 0.0196078, 0.0901961, 1 )
+
+[node name="BG2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.368627, 0.101961, 0.341176, 0 )
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 100 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+flat = true
+
+[node name="Label" type="Label" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "START"
+align = 1
+valign = 1
+
+[node name="Blip" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 478.948, 267.369 )
+stream = ExtResource( 2 )
+volume_db = -13.549
+
+[node name="DeathCount" type="Label" parent="."]
+visible = false
+margin_left = 72.2001
+margin_top = 77.6151
+margin_right = 133.2
+margin_bottom = 91.6151
+text = "Deaths: 0"
+
+[node name="TimeCount" type="Label" parent="."]
+visible = false
+margin_left = 71.784
+margin_top = 103.26
+margin_right = 132.784
+margin_bottom = 117.26
+text = "Time to complete: 0"
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

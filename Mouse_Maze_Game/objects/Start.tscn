@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sounds/Blip_dead.wav" type="AudioStream" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var global
+var trigger = false
+
+func _ready():
+	global = get_node(\"/root/global\")
+
+func _on_Start_mouse_entered():
+	global.fromStart = true
+	visible = false
+	$Particles2D.emitting = false
+
+func _process(delta):
+	if !global.fromStart:
+		visible = true
+		$Particles2D.emitting = true
+	if visible && !trigger:
+		$Reset.play(0)
+	trigger = visible"
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.933594, 0.00364685, 0.00364685, 1, 0.782806, 1, 0.65625, 1 )
+
+[node name="Start" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -935.0
+margin_bottom = -515.0
+rect_min_size = Vector2( 25, 25 )
+script = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 25, 25 )
+mouse_filter = 1
+color = Color( 0.854902, 0.109804, 0.109804, 1 )
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 13, 12 )
+amount = 80
+emission_shape = 1
+emission_sphere_radius = 39.34
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 34.34
+initial_velocity_random = 1.0
+angular_velocity = 1.05615e-005
+radial_accel = -31.8
+scale_amount = 2.0
+scale_amount_random = 1.0
+color_ramp = SubResource( 2 )
+
+[node name="Reset" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -14.618
+[connection signal="mouse_entered" from="." to="." method="_on_Start_mouse_entered"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Blip_dead.wav-597347800642209ac9ebead1265b5000.sample"
+
+[deps]
+
+source_file="res://Sounds/Blip_dead.wav"
+dest_files=[ "res://.import/Blip_dead.wav-597347800642209ac9ebead1265b5000.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

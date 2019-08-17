@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+export (String, FILE, \"*.tscn\") var next_scene
+var global
+
+func _ready():
+	global = get_node(\"/root/global\")
+	if !global.fromStart:
+		visible = false
+
+func _on_finish_mouse_entered():
+	if global.fromStart:
+		global.fromStart = false
+		get_tree().change_scene(next_scene)
+
+func _process(delta):
+	if global.fromStart:
+		visible = true
+		$Particles2D.emitting = true
+	else:
+		visible = false
+		$Particles2D.emitting = false"
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.04843, 0, 0.268066, 1, 0.527744, 0.61544, 0.979004, 1 )
+
+[node name="finish" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -935.0
+margin_bottom = -515.0
+rect_min_size = Vector2( 25, 25 )
+script = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color( 0.462745, 0.933333, 0.0352941, 1 )
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 12, 13 )
+amount = 43
+emission_shape = 1
+emission_sphere_radius = 10.48
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 94.42
+initial_velocity_random = 1.0
+angular_velocity = -44.4
+angular_velocity_random = 1.0
+linear_accel = -18.24
+linear_accel_random = 1.0
+radial_accel = -23.89
+radial_accel_random = 1.0
+scale_amount_random = 1.0
+color_ramp = SubResource( 2 )
+[connection signal="mouse_entered" from="." to="." method="_on_finish_mouse_entered"]

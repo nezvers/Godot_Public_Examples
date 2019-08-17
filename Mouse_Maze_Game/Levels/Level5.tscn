@@ -1,0 +1,722 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/MovingWall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Start.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/finish.tscn" type="PackedScene" id=4]
+
+[node name="Level" type="Node2D"]
+
+[node name="BGcontainer" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 960.0
+margin_bottom = 540.0
+
+[node name="BG" type="ColorRect" parent="BGcontainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0196078, 0.0196078, 0.0901961, 1 )
+
+[node name="Walls" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Wall" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 400.0
+margin_right = 425.0
+margin_bottom = 425.0
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 425.0
+margin_top = 450.0
+margin_right = 450.0
+margin_bottom = 475.0
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 450.0
+margin_top = 450.0
+margin_right = 475.0
+margin_bottom = 475.0
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 450.0
+margin_top = 425.0
+margin_right = 475.0
+margin_bottom = 450.0
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 450.0
+margin_top = 400.0
+margin_right = 475.0
+margin_bottom = 425.0
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 450.0
+margin_top = 375.0
+margin_right = 475.0
+margin_bottom = 400.0
+
+[node name="Wall7" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 450.0
+margin_top = 350.0
+margin_right = 475.0
+margin_bottom = 375.0
+
+[node name="Wall8" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 375.0
+margin_right = 425.0
+margin_bottom = 400.0
+
+[node name="Wall9" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 350.0
+margin_right = 425.0
+margin_bottom = 375.0
+
+[node name="Wall10" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 475.0
+margin_top = 350.0
+margin_right = 500.0
+margin_bottom = 375.0
+
+[node name="Wall11" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 350.0
+margin_right = 525.0
+margin_bottom = 375.0
+
+[node name="Wall12" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 325.0
+margin_right = 525.0
+margin_bottom = 350.0
+
+[node name="Wall13" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 300.0
+margin_right = 525.0
+margin_bottom = 325.0
+
+[node name="Wall14" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 275.0
+margin_right = 525.0
+margin_bottom = 300.0
+
+[node name="Wall15" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 250.0
+margin_right = 525.0
+margin_bottom = 275.0
+
+[node name="Wall16" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 225.0
+margin_right = 525.0
+margin_bottom = 250.0
+
+[node name="Wall17" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 475.0
+margin_top = 225.0
+margin_right = 500.0
+margin_bottom = 250.0
+
+[node name="Wall18" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 450.0
+margin_top = 225.0
+margin_right = 475.0
+margin_bottom = 250.0
+
+[node name="Wall19" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 425.0
+margin_top = 225.0
+margin_right = 450.0
+margin_bottom = 250.0
+
+[node name="Wall20" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 225.0
+margin_right = 425.0
+margin_bottom = 250.0
+
+[node name="Wall21" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 375.0
+margin_top = 225.0
+margin_right = 400.0
+margin_bottom = 250.0
+
+[node name="Wall22" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 350.0
+margin_top = 225.0
+margin_right = 375.0
+margin_bottom = 250.0
+
+[node name="Wall23" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 325.0
+margin_top = 225.0
+margin_right = 350.0
+margin_bottom = 250.0
+
+[node name="Wall24" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 325.0
+margin_top = 200.0
+margin_right = 350.0
+margin_bottom = 225.0
+
+[node name="Wall25" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 325.0
+margin_top = 175.0
+margin_right = 350.0
+margin_bottom = 200.0
+
+[node name="Wall26" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 350.0
+margin_top = 175.0
+margin_right = 375.0
+margin_bottom = 200.0
+
+[node name="Wall27" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 375.0
+margin_top = 175.0
+margin_right = 400.0
+margin_bottom = 200.0
+
+[node name="Wall28" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 175.0
+margin_right = 425.0
+margin_bottom = 200.0
+
+[node name="Wall29" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 425.0
+margin_top = 175.0
+margin_right = 450.0
+margin_bottom = 200.0
+
+[node name="Wall30" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 450.0
+margin_top = 175.0
+margin_right = 475.0
+margin_bottom = 200.0
+
+[node name="Wall31" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 475.0
+margin_top = 175.0
+margin_right = 500.0
+margin_bottom = 200.0
+
+[node name="Wall32" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 175.0
+margin_right = 525.0
+margin_bottom = 200.0
+
+[node name="Wall33" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 525.0
+margin_top = 175.0
+margin_right = 550.0
+margin_bottom = 200.0
+
+[node name="Wall34" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 550.0
+margin_top = 175.0
+margin_right = 575.0
+margin_bottom = 200.0
+
+[node name="Wall35" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 550.0
+margin_top = 200.0
+margin_right = 575.0
+margin_bottom = 225.0
+
+[node name="Wall36" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 575.0
+margin_top = 200.0
+margin_right = 600.0
+margin_bottom = 225.0
+
+[node name="Wall37" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 600.0
+margin_top = 200.0
+margin_right = 625.0
+margin_bottom = 225.0
+
+[node name="Wall38" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 625.0
+margin_top = 200.0
+margin_right = 650.0
+margin_bottom = 225.0
+
+[node name="Wall39" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 650.0
+margin_top = 200.0
+margin_right = 675.0
+margin_bottom = 225.0
+
+[node name="Wall40" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 675.0
+margin_top = 200.0
+margin_right = 700.0
+margin_bottom = 225.0
+
+[node name="Wall41" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 700.0
+margin_top = 200.0
+margin_right = 725.0
+margin_bottom = 225.0
+
+[node name="Wall42" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 725.0
+margin_top = 200.0
+margin_right = 750.0
+margin_bottom = 225.0
+
+[node name="Wall43" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 750.0
+margin_top = 200.0
+margin_right = 775.0
+margin_bottom = 225.0
+
+[node name="Wall44" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 775.0
+margin_top = 200.0
+margin_right = 800.0
+margin_bottom = 225.0
+
+[node name="Wall45" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 775.0
+margin_top = 175.0
+margin_right = 800.0
+margin_bottom = 200.0
+
+[node name="Wall46" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 775.0
+margin_top = 150.0
+margin_right = 800.0
+margin_bottom = 175.0
+
+[node name="Wall47" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 775.0
+margin_top = 150.0
+margin_right = 800.0
+margin_bottom = 175.0
+
+[node name="Wall48" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 375.0
+margin_top = 350.0
+margin_right = 400.0
+margin_bottom = 375.0
+
+[node name="Wall49" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 350.0
+margin_top = 350.0
+margin_right = 375.0
+margin_bottom = 375.0
+
+[node name="Wall50" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 325.0
+margin_top = 350.0
+margin_right = 350.0
+margin_bottom = 375.0
+
+[node name="Wall51" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 300.0
+margin_top = 350.0
+margin_right = 325.0
+margin_bottom = 375.0
+
+[node name="Wall52" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 275.0
+margin_top = 350.0
+margin_right = 300.0
+margin_bottom = 375.0
+
+[node name="Wall53" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 275.0
+margin_top = 325.0
+margin_right = 300.0
+margin_bottom = 350.0
+
+[node name="Wall54" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 275.0
+margin_top = 300.0
+margin_right = 300.0
+margin_bottom = 325.0
+
+[node name="Wall55" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 275.0
+margin_top = 275.0
+margin_right = 300.0
+margin_bottom = 300.0
+
+[node name="Wall56" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 275.0
+margin_top = 250.0
+margin_right = 300.0
+margin_bottom = 275.0
+
+[node name="Wall57" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 250.0
+margin_top = 250.0
+margin_right = 275.0
+margin_bottom = 275.0
+
+[node name="Wall58" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 225.0
+margin_top = 250.0
+margin_right = 250.0
+margin_bottom = 275.0
+
+[node name="Wall59" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 200.0
+margin_top = 250.0
+margin_right = 225.0
+margin_bottom = 275.0
+
+[node name="Wall60" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 175.0
+margin_top = 250.0
+margin_right = 200.0
+margin_bottom = 275.0
+
+[node name="Wall61" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 150.0
+margin_top = 250.0
+margin_right = 175.0
+margin_bottom = 275.0
+
+[node name="Wall62" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 150.0
+margin_top = 225.0
+margin_right = 175.0
+margin_bottom = 250.0
+
+[node name="Wall63" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 150.0
+margin_top = 200.0
+margin_right = 175.0
+margin_bottom = 225.0
+
+[node name="Wall64" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 150.0
+margin_top = 175.0
+margin_right = 175.0
+margin_bottom = 200.0
+
+[node name="Wall65" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 150.0
+margin_top = 150.0
+margin_right = 175.0
+margin_bottom = 175.0
+
+[node name="Wall66" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 300.0
+margin_top = 200.0
+margin_right = 325.0
+margin_bottom = 225.0
+
+[node name="Wall67" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 275.0
+margin_top = 200.0
+margin_right = 300.0
+margin_bottom = 225.0
+
+[node name="Wall68" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 250.0
+margin_top = 200.0
+margin_right = 275.0
+margin_bottom = 225.0
+
+[node name="Wall69" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 225.0
+margin_top = 200.0
+margin_right = 250.0
+margin_bottom = 225.0
+
+[node name="Wall70" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 225.0
+margin_bottom = 225.0
+
+[node name="Wall71" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 150.0
+margin_top = 125.0
+margin_right = 175.0
+margin_bottom = 150.0
+
+[node name="Wall72" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 150.0
+margin_top = 100.0
+margin_right = 175.0
+margin_bottom = 125.0
+
+[node name="Wall73" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 175.0
+margin_top = 100.0
+margin_right = 200.0
+margin_bottom = 125.0
+
+[node name="Wall74" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 200.0
+margin_top = 100.0
+margin_right = 225.0
+margin_bottom = 125.0
+
+[node name="Wall75" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 225.0
+margin_top = 100.0
+margin_right = 250.0
+margin_bottom = 125.0
+
+[node name="Wall76" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 250.0
+margin_top = 100.0
+margin_right = 275.0
+margin_bottom = 125.0
+
+[node name="Wall77" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 275.0
+margin_top = 100.0
+margin_right = 300.0
+margin_bottom = 125.0
+
+[node name="Wall78" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 325.0
+margin_bottom = 125.0
+
+[node name="Wall79" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 300.0
+margin_top = 150.0
+margin_right = 325.0
+margin_bottom = 175.0
+
+[node name="Wall80" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 325.0
+margin_top = 150.0
+margin_right = 350.0
+margin_bottom = 175.0
+
+[node name="Wall81" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 325.0
+margin_top = 100.0
+margin_right = 350.0
+margin_bottom = 125.0
+
+[node name="Wall82" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 350.0
+margin_top = 100.0
+margin_right = 375.0
+margin_bottom = 125.0
+
+[node name="Wall83" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 375.0
+margin_top = 100.0
+margin_right = 400.0
+margin_bottom = 125.0
+
+[node name="Wall84" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 375.0
+margin_top = 125.0
+margin_right = 400.0
+margin_bottom = 150.0
+
+[node name="Wall85" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 125.0
+margin_right = 425.0
+margin_bottom = 150.0
+
+[node name="Wall86" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 425.0
+margin_top = 125.0
+margin_right = 450.0
+margin_bottom = 150.0
+
+[node name="Wall87" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 450.0
+margin_top = 125.0
+margin_right = 475.0
+margin_bottom = 150.0
+
+[node name="Wall88" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 475.0
+margin_top = 125.0
+margin_right = 500.0
+margin_bottom = 150.0
+
+[node name="Wall89" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 125.0
+margin_right = 525.0
+margin_bottom = 150.0
+
+[node name="Wall90" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 525.0
+margin_top = 125.0
+margin_right = 550.0
+margin_bottom = 150.0
+
+[node name="Wall91" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 550.0
+margin_top = 125.0
+margin_right = 575.0
+margin_bottom = 150.0
+
+[node name="Wall92" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 550.0
+margin_top = 100.0
+margin_right = 575.0
+margin_bottom = 125.0
+
+[node name="Wall93" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 550.0
+margin_top = 75.0
+margin_right = 575.0
+margin_bottom = 100.0
+
+[node name="Wall94" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 575.0
+margin_top = 75.0
+margin_right = 600.0
+margin_bottom = 100.0
+
+[node name="Wall95" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 600.0
+margin_top = 75.0
+margin_right = 625.0
+margin_bottom = 100.0
+
+[node name="Wall96" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 625.0
+margin_top = 75.0
+margin_right = 650.0
+margin_bottom = 100.0
+
+[node name="Wall97" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 650.0
+margin_top = 75.0
+margin_right = 675.0
+margin_bottom = 100.0
+
+[node name="Wall98" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 675.0
+margin_top = 75.0
+margin_right = 700.0
+margin_bottom = 100.0
+
+[node name="Wall99" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 700.0
+margin_top = 75.0
+margin_right = 725.0
+margin_bottom = 100.0
+
+[node name="Wall100" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 700.0
+margin_top = 100.0
+margin_right = 725.0
+margin_bottom = 125.0
+
+[node name="Wall101" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 700.0
+margin_top = 125.0
+margin_right = 725.0
+margin_bottom = 150.0
+
+[node name="Wall102" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 700.0
+margin_top = 150.0
+margin_right = 725.0
+margin_bottom = 175.0
+
+[node name="Wall103" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 725.0
+margin_top = 150.0
+margin_right = 750.0
+margin_bottom = 175.0
+
+[node name="Wall104" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 725.0
+margin_top = 150.0
+margin_right = 750.0
+margin_bottom = 175.0
+
+[node name="MovingWall" parent="Walls" instance=ExtResource( 2 )]
+margin_left = 300.0
+margin_top = 250.0
+margin_right = 325.0
+margin_bottom = 275.0
+move = Vector2( 7, 3 )
+offset = Vector2( 0, 0.3 )
+
+[node name="MovingWall2" parent="Walls" instance=ExtResource( 2 )]
+margin_left = 475.0
+margin_top = 250.0
+margin_right = 500.0
+margin_bottom = 275.0
+move = Vector2( -7, 3 )
+
+[node name="MovingWall3" parent="Walls" instance=ExtResource( 2 )]
+margin_left = 175.0
+margin_top = 125.0
+margin_right = 200.0
+margin_bottom = 150.0
+move = Vector2( 4, 2 )
+offset = Vector2( 0.9, 0 )
+
+[node name="MovingWall4" parent="Walls" instance=ExtResource( 2 )]
+margin_left = 675.0
+margin_top = 100.0
+margin_right = 700.0
+margin_bottom = 125.0
+move = Vector2( -4, 3 )
+offset = Vector2( 0.9, 0 )
+
+[node name="MovingWall5" parent="Walls" instance=ExtResource( 2 )]
+margin_left = 575.0
+margin_top = 175.0
+margin_right = 600.0
+margin_bottom = 200.0
+move = Vector2( 4, 0 )
+speed = 1.0
+
+[node name="Wall105" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 450.0
+margin_right = 425.0
+margin_bottom = 475.0
+
+[node name="Wall106" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 375.0
+margin_top = 450.0
+margin_right = 400.0
+margin_bottom = 475.0
+
+[node name="Wall107" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 375.0
+margin_top = 425.0
+margin_right = 400.0
+margin_bottom = 450.0
+
+[node name="Wall108" parent="Walls" instance=ExtResource( 1 )]
+margin_left = 375.0
+margin_top = 400.0
+margin_right = 400.0
+margin_bottom = 425.0
+
+[node name="Start" parent="." instance=ExtResource( 3 )]
+margin_left = 425.0
+margin_top = 425.0
+margin_right = 450.0
+margin_bottom = 450.0
+
+[node name="finish" parent="." instance=ExtResource( 4 )]
+margin_left = 750.0
+margin_top = 150.0
+margin_right = 775.0
+margin_bottom = 175.0
+next_scene = "res://Levels/Level6.tscn"

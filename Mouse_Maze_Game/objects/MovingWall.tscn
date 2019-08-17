@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/Wall.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+const tile = 25
+const DEG2RAD = 0.01745329252
+export (Vector2) var move = Vector2(0,0)
+export (Vector2) var offset = Vector2(0,0)
+export (float) var speed = 0.5
+var start = Vector2()
+var dist = Vector2()
+var pos = Vector2()
+var time = 0
+
+func _ready():
+	var pos = get_global_position()
+	var x = pos.x + tile * move.x / 2
+	var y = pos.y + tile * move.y / 2
+	start = Vector2(x, y)
+	dist = Vector2(tile * move.x / 2, tile * move.y / 2)
+
+func _on_Wall_mouse_entered():
+	var global = get_node(\"/root/global\")
+	global.fromStart = false
+	global.death +=1
+
+func _process(delta):
+	time = time + delta / speed * DEG2RAD
+	pos.x = start.x + cos(90 * time + offset.x * 90) *dist.x
+	pos.y = start.y + sin(90 * time + offset.y * 90) *dist.y
+	set_global_position(pos)
+
+
+
+
+
+
+
+"
+
+[node name="MovingWall" instance=ExtResource( 1 )]
+script = SubResource( 1 )
+
+[node name="Shadow" type="ColorRect" parent="." index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+rect_scale = Vector2( 1.04, 1.04 )
+color = Color( 0, 0, 0, 0.313726 )
