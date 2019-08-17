@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Levels/Room.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Floor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Void.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Mesh_lib.meshlib" type="MeshLibrary" id=7]
+
+[node name="Room" type="Node"]
+script = ExtResource( 1 )
+next_scene = "res://Menu.tscn"
+
+[node name="GUI" parent="." instance=ExtResource( 2 )]
+mouse_filter = 2
+
+[node name="Floors" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="Floor" parent="Floors" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 6, -10.5, 0, 8 )
+
+[node name="Floor3" parent="Floors" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 6, 1.5, 0, -4 )
+
+[node name="Floor5" parent="Floors" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 6, 13.5, 0, 0 )
+
+[node name="Floor2" parent="Floors" instance=ExtResource( 3 )]
+transform = Transform( 6, 0, 0, 0, 1, 0, 0, 0, 2, -2.5, 0, 4 )
+
+[node name="Floor4" parent="Floors" instance=ExtResource( 3 )]
+transform = Transform( 6, 0, 0, 0, 1, 0, 0, 0, 2, 9.5, 0, -8 )
+
+[node name="Boxes" type="Spatial" parent="."]
+transform = Transform( 0.999721, 0, 0, 0, 0.999721, 0, 0, 0, 0.999721, 0, 0, 0 )
+
+[node name="Box" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5031, 0.5, 13.5036 )
+
+[node name="Box2" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5031, 0.5, 2.50056 )
+
+[node name="Box3" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0007, 0.5, 3.50084 )
+
+[node name="Box4" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50028, 0.5, -9.50279 )
+
+[node name="Box5" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.004, 0.5, -8.50251 )
+
+[node name="Box6" parent="Boxes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5036, 0.5, 5.5014 )
+
+[node name="Void" parent="." instance=ExtResource( 5 )]
+transform = Transform( 4.86259, 0, 0, 0, 1, 0, 0, 0, -4.35635, 0, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.5, 11.5 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 7 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 3, 0, -1610612736, 11, 0, 0, 15, 0, 0, 65535, 0, 0, 3, 1, 0, 11, 1, -1610612736, 15, 1, 0, 65523, 1, -1610612736, 65527, 1, 0, 65528, 1, 0, 65529, 1, -1610612736, 65530, 1, -1610612736, 65531, 1, -1610612736, 65532, 1, 0, 65533, 1, -1610612736, 65534, 1, 0, 65535, 1, -1610612736, 11, 2, -1610612736, 15, 2, -1610612736, 65523, 2, 0, 11, 3, -1610612736, 15, 3, -1610612736, 65523, 3, 0, 11, 4, -1610612736, 15, 4, -1610612736, 65523, 4, 0, 0, 5, 0, 1, 5, 0, 2, 5, -1610612736, 3, 5, -1610612736, 11, 5, 0, 15, 5, 0, 65523, 5, -1610612736, 65527, 5, -1610612736, 65528, 5, 0, 65529, 5, 0, 65530, 5, -1610612736, 65531, 5, -1610612736, 65532, 5, -1610612736, 65533, 5, -1610612736, 65534, 5, -1610612736, 65535, 5, -1610612736, 65523, 6, -1610612736, 65527, 6, -1610612736, 65523, 7, 0, 65527, 7, 0, 65523, 8, 0, 65527, 8, -1610612736, 65523, 9, -1610612736, 65527, 9, 0, 65523, 10, 0, 65527, 10, -1610612736, 65523, 11, -1610612736, 65527, 11, 0, 65523, 12, 0, 65527, 12, 0, 65523, 13, 0, 65527, 13, 0, 3, 65525, -1610612736, 4, 65525, 0, 5, 65525, 0, 6, 65525, 0, 7, 65525, -1610612736, 8, 65525, 0, 9, 65525, -1610612736, 10, 65525, 0, 11, 65525, 0, 12, 65525, 0, 13, 65525, 0, 14, 65525, 0, 15, 65525, 0, 65535, 65525, 0, 65535, 65526, 0, 65535, 65527, 0, 65535, 65528, -1610612736, 3, 65529, 0, 4, 65529, 0, 5, 65529, 0, 6, 65529, 0, 7, 65529, 0, 8, 65529, -1610612736, 9, 65529, 0, 10, 65529, -1610612736, 11, 65529, 0, 15, 65529, -1610612736, 65535, 65529, -1610612736, 3, 65530, -1610612736, 11, 65530, -1610612736, 15, 65530, 0, 65535, 65530, -1610612736, 3, 65531, -1610612736, 11, 65531, -1610612736, 15, 65531, 0, 65535, 65531, -1610612736, 3, 65532, -1610612736, 11, 65532, 0, 15, 65532, -1610612736, 65535, 65532, 0, 3, 65533, -1610612736, 11, 65533, 0, 15, 65533, -1610612736, 65535, 65533, -1610612736, 3, 65534, 0, 11, 65534, 0, 15, 65534, -1610612736, 65535, 65534, 536870912, 3, 65535, 536870912, 11, 65535, 0, 15, 65535, -1610612736, 65535, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}

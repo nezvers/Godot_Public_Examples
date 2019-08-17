@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/timerTheme.tres" type="Theme" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/Born2bSportyV2.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Time" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "TIME:"
+
+[node name="Count" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -43.5
+margin_top = 24.0
+margin_right = 43.5
+margin_bottom = 48.0
+theme = ExtResource( 1 )
+text = "Boxes:"
+
+[node name="Tip" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -157.92
+margin_top = 24.0
+margin_bottom = 35.0
+theme = SubResource( 3 )
+text = "W / Up = forward
+S / Down = backward
+F1 = Restart room"

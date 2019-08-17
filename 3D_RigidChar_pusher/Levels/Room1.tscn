@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Levels/Room.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Floor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Void.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Mesh_lib.meshlib" type="MeshLibrary" id=7]
+
+[node name="Room" type="Node"]
+script = ExtResource( 1 )
+next_scene = "res://Levels/Room2.tscn"
+
+[node name="GUI" parent="." instance=ExtResource( 2 )]
+mouse_filter = 2
+
+[node name="Floor" parent="." instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
+
+[node name="Void" parent="." instance=ExtResource( 4 )]
+transform = Transform( 8.63654, 0, 0, 0, 1, 0, 0, 0, -3.26726, 0, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+
+[node name="Boxes" type="Spatial" parent="."]
+transform = Transform( 0.999721, 0, 0, 0, 0.999721, 0, 0, 0, 0.999721, 0, 0, 0 )
+
+[node name="Wall" parent="Boxes" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49972, 0.5, -0.497484 )
+
+[node name="Wall2" parent="Boxes" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.501118, 0.5, -8.50112 )
+
+[node name="Wall3" parent="Boxes" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50336, 0.5, 0.5 )
+
+[node name="Wall4" parent="Boxes" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499162, 0.5, 8.50112 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 7 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 9, 4, 0, 65526, 4, 0, 9, 5, 1610612736, 65526, 5, 0, 9, 6, -1610612736, 65526, 6, 0, 9, 7, 0, 65526, 7, 0, 9, 8, 0, 65526, 8, -1610612736, 4, 9, 0, 5, 9, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 9, 9, 0, 65526, 9, 0, 65527, 9, 0, 65528, 9, 0, 65529, 9, 0, 65530, 9, 0, 65531, 9, 0, 4, 65526, 0, 5, 65526, 0, 6, 65526, 0, 7, 65526, 0, 8, 65526, 0, 9, 65526, 0, 65526, 65526, 0, 65527, 65526, 0, 65528, 65526, 0, 65529, 65526, 0, 65530, 65526, 0, 65531, 65526, 0, 9, 65527, 0, 65526, 65527, 0, 9, 65528, 0, 65526, 65528, 0, 9, 65529, 0, 65526, 65529, 0, 9, 65530, 0, 65526, 65530, 0, 9, 65531, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
