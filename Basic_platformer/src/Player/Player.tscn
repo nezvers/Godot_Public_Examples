@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 8 )
+
+[node name="Player" type="KinematicBody2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="Rect" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="Body" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="ColorRect" type="ColorRect" parent="Body"]
+margin_left = -5.0
+margin_top = -16.0
+margin_right = 5.0
