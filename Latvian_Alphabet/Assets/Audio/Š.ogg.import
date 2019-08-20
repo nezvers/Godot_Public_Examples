@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Š.ogg-b0c7a7c56ba7e16a270fb22a1d8a4ef3.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Š.ogg"
+dest_files=[ "res://.import/Š.ogg-b0c7a7c56ba7e16a270fb22a1d8a4ef3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

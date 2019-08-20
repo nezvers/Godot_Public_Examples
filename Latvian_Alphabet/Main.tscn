@@ -1,0 +1,375 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/new_theme.tres" type="Theme" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Letters" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="A" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 40.0
+margin_top = 80.0
+margin_right = 110.0
+margin_bottom = 150.0
+text = "Aa"
+audio_file = "res://Assets/Audio/A.ogg"
+
+[node name="Ā" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 160.0
+margin_top = 80.0
+margin_right = 230.0
+margin_bottom = 150.0
+text = "Āā"
+audio_file = "res://Assets/Audio/Ā.ogg"
+
+[node name="B" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 280.0
+margin_top = 80.0
+margin_right = 350.0
+margin_bottom = 150.0
+text = "Bb"
+audio_file = "res://Assets/Audio/B.ogg"
+
+[node name="C" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 80.0
+margin_right = 470.0
+margin_bottom = 150.0
+text = "Cc"
+audio_file = "res://Assets/Audio/C.ogg"
+
+[node name="Č" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 520.0
+margin_top = 80.0
+margin_right = 590.0
+margin_bottom = 150.0
+text = "Čč"
+audio_file = "res://Assets/Audio/Č.ogg"
+
+[node name="D" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 640.0
+margin_top = 80.0
+margin_right = 713.0
+margin_bottom = 150.0
+text = "Dd"
+audio_file = "res://Assets/Audio/D.ogg"
+
+[node name="E" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 760.0
+margin_top = 80.0
+margin_right = 833.0
+margin_bottom = 150.0
+text = "Ee"
+audio_file = "res://Assets/Audio/E.ogg"
+
+[node name="Ē" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 880.0
+margin_top = 80.0
+margin_right = 953.0
+margin_bottom = 150.0
+text = "Ēē"
+audio_file = "res://Assets/Audio/Ē.ogg"
+
+[node name="F" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 1000.0
+margin_top = 80.0
+margin_right = 1073.0
+margin_bottom = 150.0
+text = "Ff"
+audio_file = "res://Assets/Audio/F.ogg"
+
+[node name="G" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 1120.0
+margin_top = 80.0
+margin_right = 1193.0
+margin_bottom = 150.0
+text = "Gg"
+audio_file = "res://Assets/Audio/G.ogg"
+
+[node name="Ģ" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 40.0
+margin_top = 200.0
+margin_right = 113.0
+margin_bottom = 270.0
+text = "Ģģ"
+audio_file = "res://Assets/Audio/Ģ.ogg"
+
+[node name="H" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 160.0
+margin_top = 200.0
+margin_right = 237.0
+margin_bottom = 270.0
+text = "Hh"
+audio_file = "res://Assets/Audio/H.ogg"
+
+[node name="I" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 280.0
+margin_top = 200.0
+margin_right = 357.0
+margin_bottom = 270.0
+text = "Ii"
+audio_file = "res://Assets/Audio/I.ogg"
+
+[node name="Ī" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 200.0
+margin_right = 477.0
+margin_bottom = 270.0
+text = "Īī"
+audio_file = "res://Assets/Audio/Ī.ogg"
+
+[node name="J" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 520.0
+margin_top = 200.0
+margin_right = 597.0
+margin_bottom = 270.0
+text = "Jj"
+audio_file = "res://Assets/Audio/J.ogg"
+
+[node name="K" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 640.0
+margin_top = 200.0
+margin_right = 717.0
+margin_bottom = 270.0
+text = "Kk"
+audio_file = "res://Assets/Audio/K.ogg"
+
+[node name="Ķ" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 760.0
+margin_top = 200.0
+margin_right = 837.0
+margin_bottom = 270.0
+text = "Ķķ"
+audio_file = "res://Assets/Audio/Ķ.ogg"
+
+[node name="L" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 880.0
+margin_top = 200.0
+margin_right = 957.0
+margin_bottom = 270.0
+text = "Ll"
+audio_file = "res://Assets/Audio/L.ogg"
+
+[node name="Ļ" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 1000.0
+margin_top = 200.0
+margin_right = 1077.0
+margin_bottom = 270.0
+text = "Ļļ"
+audio_file = "res://Assets/Audio/Ļ.ogg"
+
+[node name="M" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 1120.0
+margin_top = 200.0
+margin_right = 1218.0
+margin_bottom = 270.0
+text = "Mm"
+audio_file = "res://Assets/Audio/M.ogg"
+
+[node name="N" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 40.0
+margin_top = 320.0
+margin_right = 117.0
+margin_bottom = 390.0
+text = "Nn"
+audio_file = "res://Assets/Audio/N.ogg"
+
+[node name="Ņ" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 160.0
+margin_top = 320.0
+margin_right = 237.0
+margin_bottom = 390.0
+text = "Ņņ"
+audio_file = "res://Assets/Audio/Ņ.ogg"
+
+[node name="O" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 280.0
+margin_top = 320.0
+margin_right = 357.0
+margin_bottom = 390.0
+text = "Oo"
+audio_file = "res://Assets/Audio/O.ogg"
+
+[node name="P" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 320.0
+margin_right = 477.0
+margin_bottom = 390.0
+text = "Pp"
+audio_file = "res://Assets/Audio/P.ogg"
+
+[node name="R" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 520.0
+margin_top = 320.0
+margin_right = 597.0
+margin_bottom = 390.0
+text = "Rr"
+audio_file = "res://Assets/Audio/R.ogg"
+
+[node name="S" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 640.0
+margin_top = 320.0
+margin_right = 717.0
+margin_bottom = 390.0
+text = "Ss"
+audio_file = "res://Assets/Audio/S.ogg"
+
+[node name="Š" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 760.0
+margin_top = 320.0
+margin_right = 837.0
+margin_bottom = 390.0
+text = "Šš"
+audio_file = "res://Assets/Audio/Š.ogg"
+
+[node name="T" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 880.0
+margin_top = 320.0
+margin_right = 957.0
+margin_bottom = 390.0
+text = "Tt"
+audio_file = "res://Assets/Audio/T.ogg"
+
+[node name="U" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 1000.0
+margin_top = 320.0
+margin_right = 1077.0
+margin_bottom = 390.0
+text = "Uu"
+audio_file = "res://Assets/Audio/U.ogg"
+
+[node name="Ū" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 1120.0
+margin_top = 320.0
+margin_right = 1197.0
+margin_bottom = 390.0
+text = "Ūū"
+audio_file = "res://Assets/Audio/Ū.ogg"
+
+[node name="V" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 40.0
+margin_top = 440.0
+margin_right = 117.0
+margin_bottom = 510.0
+text = "Vv"
+audio_file = "res://Assets/Audio/V.ogg"
+
+[node name="Z" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 160.0
+margin_top = 440.0
+margin_right = 237.0
+margin_bottom = 510.0
+text = "Zz"
+audio_file = "res://Assets/Audio/Z.ogg"
+
+[node name="Ž" parent="Letters" instance=ExtResource( 1 )]
+margin_left = 280.0
+margin_top = 440.0
+margin_right = 357.0
+margin_bottom = 510.0
+text = "Žž"
+audio_file = "res://Assets/Audio/Ž.ogg"
+
+[node name="Diftongs" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="IE" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 40.0
+margin_top = 600.0
+margin_right = 117.0
+margin_bottom = 670.0
+text = "IE"
+audio_file = "res://Assets/Audio/IE.ogg"
+
+[node name="EI" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 160.0
+margin_top = 600.0
+margin_right = 237.0
+margin_bottom = 670.0
+text = "EI"
+audio_file = "res://Assets/Audio/EI.ogg"
+
+[node name="AI" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 280.0
+margin_top = 600.0
+margin_right = 357.0
+margin_bottom = 670.0
+text = "AI"
+audio_file = "res://Assets/Audio/AI.ogg"
+
+[node name="AU" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = 600.0
+margin_right = 477.0
+margin_bottom = 670.0
+text = "AU"
+audio_file = "res://Assets/Audio/AU.ogg"
+
+[node name="UO" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 520.0
+margin_top = 600.0
+margin_right = 599.0
+margin_bottom = 670.0
+text = "UO"
+audio_file = "res://Assets/Audio/UO.ogg"
+
+[node name="UI" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 640.0
+margin_top = 600.0
+margin_right = 719.0
+margin_bottom = 670.0
+text = "UI"
+audio_file = "res://Assets/Audio/UI.ogg"
+
+[node name="IU" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 760.0
+margin_top = 600.0
+margin_right = 839.0
+margin_bottom = 670.0
+text = "IU"
+audio_file = "res://Assets/Audio/IU.ogg"
+
+[node name="EU" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 880.0
+margin_top = 600.0
+margin_right = 959.0
+margin_bottom = 670.0
+text = "EU"
+audio_file = "res://Assets/Audio/EU.ogg"
+
+[node name="OU" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 1000.0
+margin_top = 600.0
+margin_right = 1079.0
+margin_bottom = 670.0
+text = "OU"
+audio_file = "res://Assets/Audio/OU.ogg"
+
+[node name="OI" parent="Diftongs" instance=ExtResource( 1 )]
+margin_left = 1120.0
+margin_top = 600.0
+margin_right = 1199.0
+margin_bottom = 670.0
+text = "OI"
+audio_file = "res://Assets/Audio/OI.ogg"
+
+[node name="Dift" type="Label" parent="."]
+margin_left = 440.0
+margin_top = 520.0
+margin_right = 624.0
+margin_bottom = 584.0
+theme = ExtResource( 2 )
+text = "Diphthong"
+
+[node name="Letters2" type="Label" parent="."]
+margin_left = 440.0
+margin_right = 624.0
+margin_bottom = 64.0
+theme = ExtResource( 2 )
+text = "Letters"

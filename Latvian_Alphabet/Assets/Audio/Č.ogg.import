@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Č.ogg-30a198cdb5f57c0435010274b92fd847.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Č.ogg"
+dest_files=[ "res://.import/Č.ogg-30a198cdb5f57c0435010274b92fd847.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

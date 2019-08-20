@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Ļ.ogg-abd1ee87f5145ceb202690ad90cee05b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Ļ.ogg"
+dest_files=[ "res://.import/Ļ.ogg-abd1ee87f5145ceb202690ad90cee05b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

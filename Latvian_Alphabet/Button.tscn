@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/new_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Button.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Audio/A.ogg" type="AudioStream" id=3]
+
+[node name="Button" type="Button"]
+margin_right = 28.0
+margin_bottom = 20.0
+theme = ExtResource( 1 )
+text = "A"
+script = ExtResource( 2 )
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="mouse_entered" from="." to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_Button_pressed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Ģ.ogg-610679bc7ffde77f02a995f51c1537dc.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Ģ.ogg"
+dest_files=[ "res://.import/Ģ.ogg-610679bc7ffde77f02a995f51c1537dc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
