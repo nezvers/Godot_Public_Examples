@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Heart.png" type="Texture" id=2]
+
+[sub_resource type="Curve" id=1]
+min_value = 0.2
+
+[node name="Player" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+color = Color( 0.152941, 0.384314, 1, 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 0.41
+texture = ExtResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 71.71
+initial_velocity_random = 1.0
+angular_velocity = 378.18
+angular_velocity_random = 1.0
+linear_accel = 59.14
+linear_accel_random = 1.0
+angle_random = 1.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -25.8189
+margin_top = -32.1744
+margin_right = 29.1811
+margin_bottom = -18.1744
+text = "Sharon!!!"
+
+[node name="Succeeded" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 12.9787 )
+rotation = 1.5708
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+spread = 4.36
+gravity = Vector2( 0, 0 )
+initial_velocity = 183.79
+initial_velocity_random = 0.29
+linear_accel = -135.6
+scale_amount = 4.0
+scale_amount_random = 1.0
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
