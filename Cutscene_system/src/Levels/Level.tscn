@@ -10,4 +10,4 @@ position = Vector2( 259, 175 )
 
 [node name="Trigger" parent="." instance=ExtResource( 2 )]
 position = Vector2( 168, 274 )
-
+pattern_script = "res://src/Objects/Pattern.gd"
