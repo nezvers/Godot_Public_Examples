@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cam.tscn" type="PackedScene" id=2]
+
+[node name="Level" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -26.417
+margin_top = -0.328964
+margin_right = -2.41702
+margin_bottom = 24.671
+rect_scale = Vector2( 0.279998, 0.320001 )
+mouse_filter = 2
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -0.306335, 0.419167 )
+
+[node name="Cam" parent="." instance=ExtResource( 2 )]
+strenght = 500.0
+softness = 8.0
