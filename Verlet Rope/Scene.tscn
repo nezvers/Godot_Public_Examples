@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Verlet.tscn" type="PackedScene" id=1]
+
+[node name="Scene" type="Node2D"]
+
+[node name="String" parent="." instance=ExtResource( 1 )]
+position = Vector2( 86.1184, 62.5861 )
+z_index = 1
