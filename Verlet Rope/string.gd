@@ -37,6 +37,9 @@ func _process(delta):
 		pos_ex[0] = get_global_mouse_position()
 		#find the best feel length ratio
 		print("length ratio to distance ",length/pos[count-1].distance_to(pos[0]))
+	if Input.is_action_pressed("right_click"):	#Move start point
+		pos[count-1] = get_global_mouse_position()
+		pos_ex[count-1] = get_global_mouse_position()
 	update_points(delta)
 	update_distance()
 	#update_distance()	#Repeat to get tighter rope
