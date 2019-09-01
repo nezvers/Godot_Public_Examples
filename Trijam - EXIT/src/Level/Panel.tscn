@@ -1,0 +1,165 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/Level/Panel.gd" type="Script" id=1]
+[ext_resource path="res://src/Objects/Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Assets/Images/LCD.png" type="Texture" id=3]
+[ext_resource path="res://src/Assets/Images/Play3.png" type="Texture" id=4]
+[ext_resource path="res://src/Assets/Images/Play2.png" type="Texture" id=5]
+[ext_resource path="res://src/Assets/Images/Play1.png" type="Texture" id=6]
+[ext_resource path="res://src/Objects/PlayButton.gd" type="Script" id=7]
+[ext_resource path="res://src/Assets/Fonts/Digital Dismay.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://src/Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://src/Assets/Music/Trijam-exit.ogg" type="AudioStream" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 58
+font_data = ExtResource( 8 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 15
+font_data = ExtResource( 9 )
+
+[node name="Panel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Buttons" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="1" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_top = 64.0
+margin_right = 64.0
+margin_bottom = 128.0
+
+[node name="2" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 128.0
+margin_bottom = 128.0
+
+[node name="3" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+
+[node name="4" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_top = 128.0
+margin_right = 64.0
+margin_bottom = 192.0
+
+[node name="5" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 64.0
+margin_top = 128.0
+margin_right = 128.0
+margin_bottom = 192.0
+
+[node name="6" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 192.0
+margin_bottom = 192.0
+
+[node name="7" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_top = 192.0
+margin_right = 64.0
+margin_bottom = 256.0
+
+[node name="8" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 64.0
+margin_top = 192.0
+margin_right = 128.0
+margin_bottom = 256.0
+
+[node name="9" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 128.0
+margin_top = 192.0
+margin_right = 192.0
+margin_bottom = 256.0
+
+[node name="0" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 64.0
+margin_top = 256.0
+margin_right = 128.0
+margin_bottom = 320.0
+
+[node name="#" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_left = 128.0
+margin_top = 256.0
+margin_right = 192.0
+margin_bottom = 320.0
+
+[node name="*" parent="Buttons" instance=ExtResource( 2 )]
+editor/display_folded = true
+margin_top = 256.0
+margin_right = 64.0
+margin_bottom = 320.0
+
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 3, 1 )
+texture = ExtResource( 3 )
+
+[node name="PlayButton" type="TextureButton" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="Display" type="Label" parent="."]
+margin_left = 6.94939
+margin_top = 10.6557
+margin_right = 188.949
+margin_bottom = 71.6557
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 0.623529 )
+text = "8008544"
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+
+[node name="Level" type="Label" parent="."]
+margin_left = 33.4477
+margin_top = 2.3678
+margin_right = 73.4477
+margin_bottom = 14.3678
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 0.654902 )
+text = "Level: 1"
+
+[node name="Score" type="Label" parent="."]
+margin_left = 85.639
+margin_top = 1.91593
+margin_right = 126.639
+margin_bottom = 13.9159
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 0.654902 )
+text = "Score: 0"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -13.126
+autoplay = true
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_Button_pressed"]
+[connection signal="finished" from="Player" to="." method="_on_Player_finished"]

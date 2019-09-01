@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Marker #7.wav-1182936ebda4a54707d6734b378bbd15.sample"
+
+[deps]
+
+source_file="res://src/Assets/Sounds/Marker #7.wav"
+dest_files=[ "res://.import/Marker #7.wav-1182936ebda4a54707d6734b378bbd15.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

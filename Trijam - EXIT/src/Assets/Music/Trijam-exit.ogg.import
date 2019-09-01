@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Trijam-exit.ogg-bcb2a469ad74b292fdfc050a6799b7a0.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Music/Trijam-exit.ogg"
+dest_files=[ "res://.import/Trijam-exit.ogg-bcb2a469ad74b292fdfc050a6799b7a0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
