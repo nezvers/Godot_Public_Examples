@@ -6,7 +6,6 @@
 [node name="Level" type="Node2D"]
 
 [node name="Solids" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Solid" parent="Solids" instance=ExtResource( 1 )]
 position = Vector2( 0, 160 )
