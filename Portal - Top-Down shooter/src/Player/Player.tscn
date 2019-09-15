@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://src/Material/Sprite_colour.tres" type="Material" id=2]
+[ext_resource path="res://src/Images/Img/Player/player2.png" type="Texture" id=3]
+[ext_resource path="res://src/Images/Img/Player/player3.png" type="Texture" id=4]
+[ext_resource path="res://src/Images/Img/Player/player4.png" type="Texture" id=5]
+[ext_resource path="res://src/Images/Img/Player/player5.png" type="Texture" id=6]
+[ext_resource path="res://src/Images/Img/Player/player6.png" type="Texture" id=7]
+[ext_resource path="res://src/Images/Img/Player/player7.png" type="Texture" id=8]
+[ext_resource path="res://src/Images/Img/Player/player1.png" type="Texture" id=9]
+[ext_resource path="res://src/Object/Cursor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Object/Cam.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Object/Gun.tscn" type="PackedScene" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 2 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 0.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 3 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[node name="Body" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Body"]
+material = ExtResource( 2 )
+position = Vector2( 0, -3 )
+frames = SubResource( 2 )
+animation = "Idle"
+playing = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, 2 )
+shape = SubResource( 3 )
+
+[node name="Blink" type="Timer" parent="."]
+wait_time = 0.06
+one_shot = true
+
+[node name="Kickback" type="Timer" parent="."]
+wait_time = 0.16
+one_shot = true
+
+[node name="Invulnerable" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
+[node name="Cursor" parent="." instance=ExtResource( 10 )]
+
+[node name="Cam" parent="." instance=ExtResource( 11 )]
+
+[node name="Gun" parent="." instance=ExtResource( 12 )]
+[connection signal="timeout" from="Blink" to="." method="_on_Blink_timeout"]
+[connection signal="timeout" from="Kickback" to="." method="_on_Kickback_timeout"]
+[connection signal="timeout" from="Invulnerable" to="." method="_on_Invulnerable_timeout"]

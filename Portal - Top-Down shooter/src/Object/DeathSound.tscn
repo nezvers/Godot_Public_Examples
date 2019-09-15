@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Object/DeathSound.gd" type="Script" id=1]
+
+[node name="DeathSound" type="AudioStreamPlayer2D"]
+max_distance = 320.0
+bus = "SFX"
+script = ExtResource( 1 )
+[connection signal="finished" from="." to="." method="_on_DeathSound_finished"]

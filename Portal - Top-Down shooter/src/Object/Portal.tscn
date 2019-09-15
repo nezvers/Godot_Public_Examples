@@ -1,0 +1,45 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/Object/Portal.gd" type="Script" id=1]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_0.png" type="Texture" id=2]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_1.png" type="Texture" id=3]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_2.png" type="Texture" id=4]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_3.png" type="Texture" id=5]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_4.png" type="Texture" id=6]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_5.png" type="Texture" id=7]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_6.png" type="Texture" id=8]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_7.png" type="Texture" id=9]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_8.png" type="Texture" id=10]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_9.png" type="Texture" id=11]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_10.png" type="Texture" id=12]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_11.png" type="Texture" id=13]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_12.png" type="Texture" id=14]
+[ext_resource path="res://src/Images/Img/Portal/Portal.png_13.png" type="Texture" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Default",
+"speed": 15.0
+} ]
+
+[node name="Portal" type="Node2D"]
+script = ExtResource( 1 )
+CREATURE = "res://src/Enemy/Creature.tscn"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Default"
+frame = 9
+playing = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+max_distance = 320.0
+attenuation = 4.43828
+bus = "SFX"
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

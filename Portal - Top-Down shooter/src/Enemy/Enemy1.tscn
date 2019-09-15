@@ -1,0 +1,69 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://src/Material/Sprite_colour.tres" type="Material" id=1]
+[ext_resource path="res://src/Enemy/Enemy1.gd" type="Script" id=2]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_0.png" type="Texture" id=3]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_1.png" type="Texture" id=4]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_2.png" type="Texture" id=5]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_3.png" type="Texture" id=6]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_4.png" type="Texture" id=7]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_5.png" type="Texture" id=8]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_6.png" type="Texture" id=9]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_7.png" type="Texture" id=10]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_8.png" type="Texture" id=11]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_9.png" type="Texture" id=12]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_10.png" type="Texture" id=13]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_11.png" type="Texture" id=14]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_12.png" type="Texture" id=15]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_13.png" type="Texture" id=16]
+[ext_resource path="res://src/Images/Img/Creature/Creature.png_14.png" type="Texture" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5, 5 )
+
+[node name="Enemy1" type="KinematicBody2D"]
+material = ExtResource( 1 )
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+use_parent_material = true
+frames = SubResource( 2 )
+frame = 10
+playing = true
+
+[node name="Kickback" type="Timer" parent="."]
+wait_time = 0.16
+autostart = true
+
+[node name="Blink" type="Timer" parent="."]
+wait_time = 0.06
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+max_distance = 320.0
+bus = "SFX"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 3 )
+[connection signal="timeout" from="Kickback" to="." method="_on_Kickback_timeout"]
+[connection signal="timeout" from="Blink" to="." method="_on_Blink_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

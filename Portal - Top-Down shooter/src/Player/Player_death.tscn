@@ -1,0 +1,43 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_0.png" type="Texture" id=1]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_1.png" type="Texture" id=2]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_2.png" type="Texture" id=3]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_3.png" type="Texture" id=4]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_4.png" type="Texture" id=5]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_5.png" type="Texture" id=6]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_6.png" type="Texture" id=7]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_7.png" type="Texture" id=8]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_8.png" type="Texture" id=9]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_9.png" type="Texture" id=10]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_10.png" type="Texture" id=11]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_11.png" type="Texture" id=12]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_12.png" type="Texture" id=13]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_13.png" type="Texture" id=14]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_14.png" type="Texture" id=15]
+[ext_resource path="res://src/Images/Img/Player_death/Player_dth_15.png" type="Texture" id=16]
+[ext_resource path="res://src/Player/Player_death.gd" type="Script" id=17]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "Death",
+"speed": 15.0
+} ]
+
+[node name="Player_death" type="AnimatedSprite"]
+z_index = 1
+frames = SubResource( 1 )
+animation = "Death"
+offset = Vector2( -1, -4 )
+script = ExtResource( 17 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="animation_finished" from="." to="." method="_on_Player_death_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

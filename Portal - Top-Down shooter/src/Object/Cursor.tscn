@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Object/Cursor.gd" type="Script" id=1]
+[ext_resource path="res://src/Images/Img/Cursor.png" type="Texture" id=2]
+
+
+[node name="Cursor" type="Position2D"]
+editor/display_folded = true
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
