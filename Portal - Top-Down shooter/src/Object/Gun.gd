@@ -15,14 +15,14 @@ func _ready():
 	$Sound.stream = pre_load.snd_shoot
 
 func _process(delta):
-	var dir: Vector2 = (cursor.position - player.position).normalized()
-	position = (dir * Vector2(4,2))
+	var dir: Vector2 = (cursor.global_position - player.global_position).normalized()
+	global_position = player.global_position + (dir * Vector2(4,2))
 	look_at(cursor.global_position)
-	#print(dir)
+	
 	#Flip sprite
-	if position.x > 0:
+	if dir.x > 0:
 		sprite.scale.y = 1
-	elif position.x < 0:
+	elif dir.x < 0:
 		sprite.scale.y = -1
 	
 	#Shoot
