@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Scenes/Level1.gd" type="Script" id=1]
+[ext_resource path="res://src/Scenes/Menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/IMG/Button.png" type="Texture" id=3]
+[ext_resource path="res://src/GUI/m6x11.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/Player/Player2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="Button" type="TextureRect" parent="CanvasLayer"]
+editor/display_folded = true
+margin_left = 232.0
+margin_top = 28.0
+margin_right = 272.0
+margin_bottom = 68.0
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Button"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 50.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 1 )
+text = "W"
+
+[node name="Button2" type="TextureRect" parent="CanvasLayer"]
+editor/display_folded = true
+margin_left = 184.0
+margin_top = 68.0
+margin_right = 224.0
+margin_bottom = 108.0
+texture = ExtResource( 3 )
+
+[node name="Label2" type="Label" parent="CanvasLayer/Button2"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 50.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "A"
+
+[node name="Button3" type="TextureRect" parent="CanvasLayer"]
+editor/display_folded = true
+margin_left = 232.0
+margin_top = 68.0
+margin_right = 272.0
+margin_bottom = 108.0
+texture = ExtResource( 3 )
+
+[node name="Label3" type="Label" parent="CanvasLayer/Button3"]
+margin_left = 13.0
+margin_top = 6.0
+margin_right = 53.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "D"
+
+[node name="Button4" type="TextureRect" parent="CanvasLayer"]
+editor/display_folded = true
+margin_left = 360.0
+margin_top = 28.0
+margin_right = 400.0
+margin_bottom = 68.0
+texture = ExtResource( 3 )
+
+[node name="Label4" type="Label" parent="CanvasLayer/Button4"]
+margin_left = 13.0
+margin_top = 5.0
+margin_right = 53.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 1 )
+text = "^"
+
+[node name="Button5" type="TextureRect" parent="CanvasLayer"]
+editor/display_folded = true
+margin_left = 360.0
+margin_top = 68.0
+margin_right = 400.0
+margin_bottom = 108.0
+texture = ExtResource( 3 )
+
+[node name="Label5" type="Label" parent="CanvasLayer/Button5"]
+margin_left = 13.0
+margin_top = 6.0
+margin_right = 53.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "<"
+
+[node name="Button6" type="TextureRect" parent="CanvasLayer"]
+editor/display_folded = true
+margin_left = 410.0
+margin_top = 68.0
+margin_right = 450.0
+margin_bottom = 108.0
+texture = ExtResource( 3 )
+
+[node name="Label6" type="Label" parent="CanvasLayer/Button6"]
+margin_left = 13.0
+margin_top = 6.0
+margin_right = 53.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = ">"
+
+[node name="Label7" type="Label" parent="CanvasLayer"]
+margin_left = 299.0
+margin_top = 47.0
+margin_right = 339.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 1 )
+text = "Shoot"
+
+[node name="Label8" type="Label" parent="CanvasLayer"]
+margin_left = 299.0
+margin_top = 74.0
+margin_right = 341.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 1 )
+text = "Rotate"
+
+[node name="Player2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 496, 252 )
+rotation = -1.5708
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 112, 252 )
+rotation = -1.5708
