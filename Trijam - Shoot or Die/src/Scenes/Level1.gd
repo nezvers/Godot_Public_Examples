@@ -1,5 +1,7 @@
 extends Node2D
 
+export (bool) var timer = true
+
 var time: float = 10
 
 func _ready():
@@ -7,6 +9,8 @@ func _ready():
 	Event.connect("Stop", self, "on_Stop")
 
 func _process(delta):
+	if !timer:
+		return
 	time-=delta
 	Score.emit_signal("UpdateTime", int(floor(time)))
 	if time <= 0:
