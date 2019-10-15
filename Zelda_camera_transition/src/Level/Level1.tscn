@@ -30,3 +30,4 @@ position = Vector2( 89.3016, 87.5952 )
 position = Vector2( -320, -192 )
 size = Vector2( 320, 192 )
 FONT = SubResource( 2 )
+font_size = 16

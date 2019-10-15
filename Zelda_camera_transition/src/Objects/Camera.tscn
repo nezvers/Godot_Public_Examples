@@ -45,8 +45,6 @@ shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Tween2" type="Tween" parent="."]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 160, 96 )
 current = true
@@ -57,4 +55,3 @@ drag_margin_v_enabled = false
 [connection signal="body_entered" from="Left" to="." method="_on_Left_body_entered"]
 [connection signal="body_entered" from="Right" to="." method="_on_Right_body_entered"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
-[connection signal="tween_all_completed" from="Tween2" to="." method="_on_Tween2_tween_all_completed"]
