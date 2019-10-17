@@ -7,7 +7,6 @@
 [node name="Level" type="Node2D"]
 
 [node name="Transition_sprite" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="Transition_circle" parent="." instance=ExtResource( 2 )]
 offset = Vector2( 160, 90 )

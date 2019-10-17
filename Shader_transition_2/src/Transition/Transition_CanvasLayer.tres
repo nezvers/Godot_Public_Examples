@@ -4,5 +4,5 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/percent = 0.34
+shader_param/percent = 0.0
 shader_param/tint = Color( 0.0627451, 0, 0.117647, 1 )
