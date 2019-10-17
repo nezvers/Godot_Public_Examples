@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Transition/Transition_Spritel.tres" type="Material" id=1]
+[ext_resource path="res://src/IMG/Vertical slices.png" type="Texture" id=2]
+
+[node name="Transition_sprite" type="Sprite"]
+material = ExtResource( 1 )
+texture = ExtResource( 2 )
+centered = false

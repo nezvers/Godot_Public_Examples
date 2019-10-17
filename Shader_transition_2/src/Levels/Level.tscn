@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Transition/Transition_sprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Transition/Transition_circle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Transition/Transition_CanvasLayer.tres" type="Material" id=3]
+
+[node name="Level" type="Node2D"]
+
+[node name="Transition_sprite" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="Transition_circle" parent="." instance=ExtResource( 2 )]
+offset = Vector2( 160, 90 )
+transform = Transform2D( 1, 0, 0, 1, 160, 90 )
+
+[node name="ColorRect" parent="Transition_circle" index="0"]
+material = ExtResource( 3 )
+
+[editable path="Transition_circle"]
