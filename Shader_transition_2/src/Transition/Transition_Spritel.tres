@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
-
-[ext_resource path="res://src/Transition/Transition_Sprite_gradient.shader" type="Shader" id=1]
-
-[resource]
-shader = ExtResource( 1 )
-shader_param/percent = 0.34
-shader_param/tint = Color( 0.0627451, 0, 0.117647, 1 )

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Shader_Fade_circle.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/percent = 0.825
+shader_param/pos = Vector2( 0.5, 0.5 )
+shader_param/tex_size = Vector2( 320, 180 )

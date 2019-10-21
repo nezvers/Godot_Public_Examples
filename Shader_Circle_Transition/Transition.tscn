@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Transition.gd" type="Script" id=1]
+[ext_resource path="res://Material_Fade_Circle.tres" type="Material" id=2]
+
+[node name="Transition" type="CanvasLayer"]
+layer = 128
+script = ExtResource( 1 )
+
+[node name="Fill" type="ColorRect" parent="."]
+material = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
