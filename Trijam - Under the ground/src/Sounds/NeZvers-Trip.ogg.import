@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NeZvers-Trip.ogg-a1b54b21a88b42f6eb832cd30fbb2f12.oggstr"
+
+[deps]
+
+source_file="res://src/Sounds/NeZvers-Trip.ogg"
+dest_files=[ "res://.import/NeZvers-Trip.ogg-a1b54b21a88b42f6eb832cd30fbb2f12.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
