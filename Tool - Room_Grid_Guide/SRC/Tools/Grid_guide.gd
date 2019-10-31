@@ -1,8 +1,8 @@
 tool
 extends Node2D
 
-export (Vector2) var size = Vector2(320,180)
-export (Vector2) var count = Vector2(3,2)
+export (Vector2) var size = Vector2(320,180) setget set_size
+export (Vector2) var count = Vector2(3,2) setget set_count
 export (Font) var FONT
 export (int) var font_size = 16
 
@@ -16,14 +16,18 @@ func _draw()->void:
 	draw_grid()
 	draw_grid_index()
 
-func _process(delta)->void:
-	#Check changes
-	if current_size!=size || current_count!=count || current_font!=FONT || current_font_size!= font_size:
-		current_size=size
-		current_count=count
-		current_font = FONT
-		current_font_size = font_size
-		update()
+func _ready()->void:
+	update()
+
+func set_size(value:Vector2=Vector2(1,1))->void:
+	size=value
+	print("update the size")
+	update()
+
+func set_count(value:Vector2=Vector2(1,1))->void:
+	count=value
+	print("update the count")
+	update()
 
 func draw_grid()->void:
 	var h: = int(count.x+1) #horizontal points
