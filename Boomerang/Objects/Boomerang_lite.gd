@@ -1,17 +1,14 @@
 extends Node2D
 
 enum {IDLE, FLY, STICK}
-export (float) var acceleration = 0.1 * 60
-export (float) var throw_speed = 3.5 * 60
-export (float) var return_speed = 0.5 * 60
+export (float) var throw_speed = 2 * 60
 onready var parent: = get_parent()
-var can_return: bool = true
 var state: int = IDLE
 var velocity: = Vector2.ZERO
 var pos: = Vector2.ZERO
-var speed:float
+var spin_speed: float = 4*360
 
-func _ready():
+func _ready()->void:
 	idle_position()
 
 func _physics_process(delta):
@@ -21,44 +18,43 @@ func _physics_process(delta):
 		FLY:
 			fly(delta)
 		STICK:
-			stick()
+			stick(delta)
 
-func idle():
+func idle()->void:
 	look_at(get_global_mouse_position())
 	if Input.is_action_just_pressed("click"):
 		throw()
 
-func fly(delta:float):
-	velocity += (get_target() - pos).normalized() * speed
-	velocity = velocity.clamped(throw_speed)
+func fly(delta:float)->void:
 	pos += velocity*delta #variable for disconnecting from parent movement
 	global_position = pos
-	rotation_degrees += 360*delta*4
-	if can_return && pos.distance_to(get_target()) < 8:
-		state = STICK
+	#spin
+	rotation_degrees += spin_speed*delta
 
-func stick():
+func stick(delta:float)->void:
 	#place for your solution
-	global_position = global_position.linear_interpolate(get_target(), 0.2)
-	var dist = global_position.distance_to(get_target())
-	if dist < 1:
+	var target: = get_target()
+	var dist = global_position.distance_to(target)
+	if dist < throw_speed * delta:
 		idle_position()
+	else:
+		pos = pos.linear_interpolate(target, (throw_speed * delta)/dist)
+	global_position = pos
+	#spin
+	rotation_degrees += spin_speed*delta
 
-func throw():
+func throw()->void:
 	state = FLY
-	can_return = false
 	$Timer.start()
 	velocity = (get_global_mouse_position() - global_position).normalized() * throw_speed
-	speed = acceleration
 	pos = global_position #variable for disconnecting from parent movement
 
-func idle_position():
+func idle_position()->void:
 	state = IDLE
 	global_position = get_target()
 
 func get_target()->Vector2:
 	return parent.global_position + Vector2(0,-2)
 
-func _on_Timer_timeout():
-	can_return = true
-	speed = return_speed
+func _on_Timer_timeout()->void:
+	state = STICK

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Objects/Solid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Objects/Boomerang.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Boomerang_lite.tscn" type="PackedScene" id=3]
 
 [node name="Level" type="Node2D"]
 
