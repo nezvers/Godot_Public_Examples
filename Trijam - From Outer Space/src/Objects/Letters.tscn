@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Font/Default_100.tres" type="DynamicFont" id=1]
+
+[node name="Letters" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_right = 144.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 1 )
+text = "TEST"
