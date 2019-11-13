@@ -1,0 +1,15 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "Default"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Beam/Sprite:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.584314, -0.25, 0, 0.25, 0, 0.0901961, -0.25, 0, 0.25, 0, 0.321569, -0.25, 0, 0.25, 0, 0.12549, -0.25, 0, 0.25, 0, 0.431373, -0.25, 0, 0.25, 0, 0.584314, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.8, 1 )
+}

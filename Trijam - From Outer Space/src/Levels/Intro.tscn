@@ -24,6 +24,7 @@ font_data = ExtResource( 8 )
 [node name="Intro" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0, 0 )
@@ -71,9 +72,14 @@ position = Vector2( 2642.4, 507.869 )
 texture = ExtResource( 5 )
 
 [node name="Camera" parent="." instance=ExtResource( 6 )]
+speed_base = 240.0
 
 [node name="Player" parent="Camera" instance=ExtResource( 7 )]
+editor/display_folded = true
 position = Vector2( 426.454, 228.892 )
+
+[node name="Beam" parent="Camera/Player" index="4"]
+visible = false
 
 [node name="Label" type="Label" parent="Camera"]
 margin_left = 1372.33
@@ -113,5 +119,6 @@ margin_right = 994.313
 margin_bottom = 907.063
 custom_fonts/font = ExtResource( 14 )
 text = "TYPE -> START"
-[connection signal="collected" from="Camera/Player" to="Camera" method="_on_Player_collected"]
-[connection signal="cow" from="Camera/Player" to="Camera" method="_on_Player_cow"]
+[connection signal="move" from="Camera/Player" to="Camera" method="_on_Player_move"]
+
+[editable path="Camera/Player"]

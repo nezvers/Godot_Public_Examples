@@ -2,7 +2,10 @@ extends Node
 
 signal Text
 signal Typing
+signal Score
 
+var points: int = 0 setget set_points
+var difficulity = floor(points/10)
 var text: String = ""
 var inputstr: String = "" setget set_inputstr
 var word_collection: Array = [
@@ -26,3 +29,8 @@ func _input(event)->void:
 func set_inputstr(txt:String)->void:
 	inputstr = txt
 	emit_signal("Typing", inputstr)
+
+func set_points(value:int)->void:
+	points = value
+	difficulity = floor(points/10)
+	emit_signal("Score")

@@ -2,7 +2,6 @@
 
 [resource]
 resource_name = "Default"
-length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
@@ -11,10 +10,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 10.0, -10.0, 10.0 ]
+"values": [ 0.0 ]
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Sprite:scale:x")
@@ -33,8 +32,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.248897, 0.0954313, 1.2, -0.240586, -0.104569, 0.236174, -0.0521557, 1, -0.246298, 0.116397, 0.24799, -0.124703, 0.8, -0.255515, 0.0752968, 0.294863, 0.043849, 1, -0.240193, -0.145668, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 )
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Sprite:position:x")
