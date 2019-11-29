@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://enemy.gd" type="Script" id=2]
+
+[node name="scene" type="Node2D"]
+
+[node name="player" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="enemy" type="Node" parent="."]
+script = ExtResource( 2 )
