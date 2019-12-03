@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Camera.tscn" type="PackedScene" id=1]
+
+[node name="Level" type="Node2D"]
+
+[node name="Wrap" type="Node2D" parent="."]
+
+[node name="Reference" type="ColorRect" parent="Wrap"]
+margin_left = -21.0
+margin_top = -17.0
+margin_right = 19.0
+margin_bottom = 23.0
+mouse_filter = 2
+
+[node name="Reference2" type="ColorRect" parent="Wrap"]
+margin_left = -462.0
+margin_top = -251.0
+margin_right = -422.0
+margin_bottom = -211.0
+mouse_filter = 2
+
+[node name="Reference3" type="ColorRect" parent="Wrap"]
+margin_left = 413.0
+margin_top = -242.0
+margin_right = 453.0
+margin_bottom = -202.0
+mouse_filter = 2
+
+[node name="Reference4" type="ColorRect" parent="Wrap"]
+margin_left = 403.0
+margin_top = 201.0
+margin_right = 443.0
+margin_bottom = 241.0
+mouse_filter = 2
+
+[node name="Reference5" type="ColorRect" parent="Wrap"]
+margin_left = -459.0
+margin_top = 229.0
+margin_right = -419.0
+margin_bottom = 269.0
+mouse_filter = 2
+
+[node name="Camera" parent="." instance=ExtResource( 1 )]
+Dampening = 0.2
+DampingRatio = 1.25
