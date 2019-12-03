@@ -36,14 +36,14 @@ func _unhandled_input(event)->void:
 		var impulse: = Vector2(-strength/2 +(randf()*strength), -strength/2 +(randf()*strength))
 		Event.emit_signal("Camerashake", impulse)
 
-func _process(delta)->void:
-	camerashake()
-	position = CurrentPosition
+func _process(delta)->void: #Happens every frame
+	camerashake() #Calculate shaking
+	position = CurrentPosition #implemention is up to you
 
 func camerashake()->void:
 	var Displacement: = (TargetPosition - CurrentPosition)
 	Velocity += (Tension * Displacement) - (Dampening * Velocity)
 	CurrentPosition += Velocity
 
-func apply_camerashake(impulse:Vector2)->void:
-	Velocity += impulse
+func apply_camerashake(impulse:Vector2)->void: #Trigger shaking
+	Velocity += impulse #Maybe needs to be negative impulse
