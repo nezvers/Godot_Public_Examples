@@ -1,3 +1,4 @@
+#Taken from https://www.youtube.com/watch?v=BNU8xNRk_oU
 extends Node
 class_name StateMachine
 
