@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Solid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Bouncer.tscn" type="PackedScene" id=2]
+
+[node name="Level" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Solid" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 0, -10 )
+rotation = 0.0174533
+scale = Vector2( 32, 2 )
+
+[node name="Solid2" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 0, 170 )
+scale = Vector2( 32, 1 )
+
+[node name="Solid3" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 0, 10 )
+scale = Vector2( 1, 16 )
+
+[node name="Solid4" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 313, -1.90735e-006 )
+rotation = 0.0174533
+scale = Vector2( 2, 18 )
+
+[node name="Solid5" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 77, -30 )
+rotation = 0.785398
+scale = Vector2( 5, 5 )
+
+[node name="Solid6" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 229, 151 )
+rotation = 0.436332
+scale = Vector2( 5, 5 )
+
+[node name="Bouncer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 53, 75 )
