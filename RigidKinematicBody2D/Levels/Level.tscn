@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Levels/Level.gd" type="Script" id=1]
+[ext_resource path="res://Tools/VisibleCollisionShape2D.gd" type="Script" id=2]
+[ext_resource path="res://Objects/RigidKinematicBody2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Impact_1.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 640, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 360 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 60, 60 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 200, 200 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Walls" type="StaticBody2D" parent="."]
+modulate = Color( 0, 0.0117647, 0.054902, 1 )
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 638.95, 703.235 )
+shape = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="VisibleCollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 638.95, 15.5841 )
+shape = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="VisibleCollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 17.5322, 362.332 )
+shape = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="VisibleCollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 1262.32, 358.435 )
+shape = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="VisibleCollisionShape2D5" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 595.003, 374.455 )
+rotation = 0.785398
+shape = SubResource( 3 )
+script = ExtResource( 2 )
+
+[node name="VisibleCollisionShape2D6" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 111.146, 781.801 )
+rotation = 0.457864
+shape = SubResource( 4 )
+script = ExtResource( 2 )
+
+[node name="RigidKinematicBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 559.081, 87.661 )
+linear_velocity = Vector2( 600, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
