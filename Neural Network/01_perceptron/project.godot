@@ -1,0 +1,52 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Perceptron",
+"language": "GDScript",
+"path": "res://Perceptron.gd"
+}, {
+"base": "Node2D",
+"class": "Point",
+"language": "GDScript",
+"path": "res://Point.gd"
+} ]
+_global_script_class_icons={
+"Perceptron": "",
+"Point": ""
+}
+
+[application]
+
+config/name="01_perceptron"
+run/main_scene="res://Level.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=720
+window/size/height=720
+window/size/test_width=720
+window/size/test_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[input]
+
+click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
