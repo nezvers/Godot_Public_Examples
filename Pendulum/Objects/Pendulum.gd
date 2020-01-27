@@ -4,7 +4,7 @@ onready var Origin:Vector2 = global_position 		#point the pendulum rotates aroun
 export (Vector2) var Pendulum_position = Vector2() 	#pendulum itself
 onready var arm_length = Vector2.ZERO.distance_to(Pendulum_position-Origin)
 onready var angle = Vector2.ZERO.angle_to(Pendulum_position-Origin) - deg2rad(-90) #Get angle between position + add godot angle offset
-export (float) var gravity = 0.4
+export (float) var gravity = 0.4 * 60
 
 var angular_velocity = 0.0
 var angular_acceleration = 0.0
@@ -16,11 +16,11 @@ func _draw()->void:
 func _physics_process(delta)->void:
 	game_input()	#example of in game swing kick
 	
-	process()
+	process(delta)
 	update()	#draw
 
-func process()->void:
-	angular_acceleration = (-gravity / arm_length) *sin(angle)	#Calculate acceleration (see: http://www.myphysicslab.com/pendulum1.html)
+func process(delta:float)->void:
+	angular_acceleration = ((-gravity*delta) / arm_length) *sin(angle)	#Calculate acceleration (see: http://www.myphysicslab.com/pendulum1.html)
 	angular_velocity += angular_acceleration				#Increment velocity
 	angular_velocity *= damping								#Arbitrary damping
 	angle += angular_velocity								#Increment angle
@@ -33,4 +33,4 @@ func game_input()->void:
 		dir += 1
 	elif Input.is_action_just_pressed("left"):
 		dir -= 1
-	angular_velocity += dir * 0.03 #give a kick to the swing
+	angular_velocity += dir * 0.18 #give a kick to the swing
