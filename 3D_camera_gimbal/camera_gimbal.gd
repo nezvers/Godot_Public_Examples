@@ -7,6 +7,7 @@ export (NodePath) var target
 export (float, 0.0, 2.0) var rotation_speed = PI/2
 
 # mouse properties
+export (bool) var Make_Current = false
 export (bool) var mouse_control = false
 export (float, 0.001, 0.1) var mouse_sensitivity = 0.005
 export (bool) var invert_y = false
@@ -31,8 +32,10 @@ func _ready()->void:
 	InnerGimbal.add_child(cam)
 	cam.rotate_y(PI)
 	cam.translation = Vector3(0,0,-3)
-	#cam.current = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Make_Current:
+		get_viewport().get_camera().current = false
+		cam.current = true
 
 func _unhandled_input(event)->void:
 	if event.is_action_pressed("ui_cancel"):
