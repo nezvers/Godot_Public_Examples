@@ -1,13 +1,13 @@
 extends Spatial
-class_name camera_gimbal
 #Thanks to Kids Can Code
-#notice needed actions
+class_name camera_gimbal
 
 export (NodePath) var target
 
 export (float, 0.0, 2.0) var rotation_speed = PI/2
 
 # mouse properties
+export (bool) var Make_Current = false
 export (bool) var mouse_control = false
 export (float, 0.001, 0.1) var mouse_sensitivity = 0.005
 export (bool) var invert_y = false
@@ -30,12 +30,12 @@ func _ready()->void:
 	add_child(InnerGimbal)
 	cam = Camera.new()
 	InnerGimbal.add_child(cam)
-	get_viewport().get_camera().current = false
 	cam.rotate_y(PI)
 	cam.translation = Vector3(0,0,-3)
-	cam.current = true
-	print(global_transform.origin)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Make_Current:
+		get_viewport().get_camera().current = false
+		cam.current = true
 
 func _unhandled_input(event)->void:
 	if event.is_action_pressed("ui_cancel"):
@@ -79,7 +79,7 @@ func get_input_keyboard(delta)->void:
 func _process(delta)->void:
 	if !mouse_control:
 		get_input_keyboard(delta)
-	InnerGimbal.rotation.x = clamp(InnerGimbal.rotation.x, 0.01, 1.4)
+	InnerGimbal.rotation.x = clamp(InnerGimbal.rotation.x, 0.01, PI*0.5)
 	scale = lerp(scale, Vector3.ONE * zoom, zoom_speed)
 	if target:
 		global_transform.origin = get_node(target).global_transform.origin
