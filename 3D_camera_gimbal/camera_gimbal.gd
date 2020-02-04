@@ -29,11 +29,9 @@ func _ready()->void:
 	add_child(InnerGimbal)
 	cam = Camera.new()
 	InnerGimbal.add_child(cam)
-	get_viewport().get_camera().current = false
 	cam.rotate_y(PI)
 	cam.translation = Vector3(0,0,-3)
-	cam.current = true
-	print(global_transform.origin)
+	#cam.current = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event)->void:
