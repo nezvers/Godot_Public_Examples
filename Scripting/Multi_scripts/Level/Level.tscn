@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Base_script.gd" type="Script" id=2]
+[ext_resource path="res://Script1.gd" type="Script" id=3]
+
+[node name="Level" type="Node2D"]
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 168, 141 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+script1 = ExtResource( 3 )
