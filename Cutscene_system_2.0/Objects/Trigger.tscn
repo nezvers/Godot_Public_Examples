@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/Objects/Trigger.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Trigger.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -17,5 +17,7 @@ margin_top = -16.0
 margin_right = 16.0
 margin_bottom = 16.0
 mouse_filter = 2
-
-[connection signal="body_entered" from="." to="." method="_on_Trigger_body_entered"]
+color = Color( 0.521569, 1, 0, 0.266667 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

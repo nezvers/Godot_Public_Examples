@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/Trigger.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/KinematicBody2D.tscn" type="PackedScene" id=2]
+
+[node name="Level" type="Node2D"]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Trigger" parent="Objects" instance=ExtResource( 1 )]
+position = Vector2( 165, 134 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 371, 185 )
