@@ -90,10 +90,12 @@ func multi_move(move_list:Array)->void:
 		tween.interpolate_property(instance, property, start_pos, target_pos, sec, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	tween.start()
 #Create object
-func create_object(object: Object, parent:Node, global_pos: Vector2)->void:
+func create_object(object: Object, parent:Node, global_pos: Vector2, method: NodePath = '', arguments: Array = [])->void:
 	var instance = object.instance()
 	parent.add_child(instance)
 	instance.global_position = global_pos
+	if !method.is_empty():
+		instance.callv(method, arguments)
 	trigger_pattern()
 
 
