@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 5.0
+margin_bottom = 25.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forward" type="Button" parent="CanvasLayer/HBoxContainer"]
+margin_right = 137.0
+margin_bottom = 20.0
+text = "Forward Kinematics"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Follow" type="Button" parent="CanvasLayer/HBoxContainer"]
+margin_left = 147.0
+margin_right = 230.0
+margin_bottom = 20.0
+text = "IK Follower"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FABRIK" type="Button" parent="CanvasLayer/HBoxContainer"]
+margin_left = 240.0
+margin_right = 315.0
+margin_bottom = 20.0
+text = "IK FABRIK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Forward" to="." method="_on_Forward_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Follow" to="." method="_on_Follow_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/FABRIK" to="." method="_on_FABRIK_pressed"]
