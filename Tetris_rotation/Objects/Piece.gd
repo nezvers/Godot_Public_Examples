@@ -11,10 +11,9 @@ var id: int					#Tetris piece figure index
 func _ready()->void:
 	create_blocks()
 	id = randi() % 7		#choose new piece
-	block_positions = get_block_default_positions()
-	
+	print('ready')
 	var new_rot:int = randi() % 4
-	block_positions = get_rotation_pos(new_rot, block_positions)
+	block_positions = get_rotation_pos(new_rot)
 	rotation_pos = new_rot
 	set_block_position()
 
@@ -72,8 +71,12 @@ func get_block_default_positions()->Array:
 			]
 	return pos
 
-func get_rotation_pos(rot_pos:int, block_pos:Array)->Array:
-	rot_pos = 3 if rot_pos == -1 else rot_pos % 4	
+func get_rotation_pos(rot_pos:int)->Array:
+	#make sure that rotation index is 0 to 3
+	if rot_pos < 0:
+		rot_pos += 4
+	rot_pos %= 4
+	
 	var trans = Transform2D()	#default rotation
 	match rot_pos:	#rotate transform
 		1:
@@ -82,6 +85,10 @@ func get_rotation_pos(rot_pos:int, block_pos:Array)->Array:
 			trans = trans.rotated(PI)
 		3:
 			trans = trans.rotated(PI*1.5)
+		_:
+			pass
+	
+	var block_pos:Array = get_block_default_positions()
 	
 	for i in block_pos.size():		#Set positions to rotated position
 		var x:float = block_pos[i].dot(trans.x)
@@ -159,7 +166,16 @@ func set_block_position()->void:
 	for i in blocks.size():
 		blocks[i].position = block_positions[i]
 
-
+func rotate_piece(dir:int)->void:
+	var new_rot:int = rotation_pos + dir
+	#make sure that rotation index is 0 to 3
+	if new_rot < 0:
+		new_rot += 4
+	new_rot %= 4
+	
+	block_positions = get_rotation_pos(new_rot)
+	rotation_pos = new_rot
+	set_block_position()
 
 
 
