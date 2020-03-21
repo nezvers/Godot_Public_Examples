@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Material Testers"
+config/name="3D light template"
 run/main_scene="res://Levels/Level.scn"
 config/icon="res://icon.png"
 
