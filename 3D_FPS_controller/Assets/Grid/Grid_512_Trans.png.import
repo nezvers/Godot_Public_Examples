@@ -2,28 +2,29 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/schelde.hdr-53323bd12f7aac28e3b03a932cb1d028.stex"
+path.s3tc="res://.import/Grid_512_Trans.png-37b35e24f51bf52630da7bf963ec1c62.s3tc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc" ],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/backgrounds/schelde.hdr"
-dest_files=[ "res://.import/schelde.hdr-53323bd12f7aac28e3b03a932cb1d028.stex" ]
+source_file="res://Assets/Grid/Grid_512_Trans.png"
+dest_files=[ "res://.import/Grid_512_Trans.png-37b35e24f51bf52630da7bf963ec1c62.s3tc.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

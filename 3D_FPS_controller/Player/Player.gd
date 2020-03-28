@@ -1,8 +1,9 @@
 extends KinematicBody
 
 export (float) var gravity = 0.5
-export (float) var walk_speed = 5
 export (float) var run_speed = 10
+export (float) var walk_speed = 4
+export (float) var crouch_speed = 2
 export (float) var acceleration = 25
 export (float,1) var air_control = 0.6
 export (float) var jump_power = 10
@@ -89,7 +90,9 @@ func _physics_process(delta)->void:
 	direction += (Input.get_action_strength("move_down") - Input.get_action_strength("move_up")) * basis.z
 	direction += (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * basis.x
 	
-	if is_running:
+	if is_crouching:
+		direction = direction.normalized() * crouch_speed
+	elif is_running:
 		direction = direction.normalized() * run_speed
 	else:
 		direction = direction.normalized() * walk_speed
@@ -153,6 +156,8 @@ func set_crouching(value: bool)->void:
 	is_crouching = value
 	standShape.disabled = value
 	crouchShape.disabled = !value
+	if is_crouching:
+		is_running = false
 
 func set_height(value:float)->void:
 	height = value

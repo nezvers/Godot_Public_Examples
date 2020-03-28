@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+radiance_size = 1
+sky_top_color = Color( 0.309804, 0.694118, 0.847059, 1 )
+sky_horizon_color = Color( 0.882353, 0.937255, 0.980392, 1 )
+sky_curve = 0.11471
+ground_bottom_color = Color( 0.309804, 0.435294, 0.560784, 1 )
+ground_horizon_color = Color( 0.929412, 0.937255, 0.960784, 1 )
+sun_color = Color( 0.941176, 0.886275, 0.705882, 1 )
+sun_longitude = -147.57
+sun_curve = 0.0420449
+texture_size = 1
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+tonemap_mode = 3
+tonemap_white = 2.0
+ss_reflections_enabled = true
+ss_reflections_max_steps = 32
+ssao_enabled = true
+glow_intensity = 1.24
+glow_strength = 0.93
+adjustment_contrast = 1.1
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.887738, -0.0771899, -0.453832, 0.325963, 0.801538, 0.501284, 0.32507, -0.592941, 0.736716, -3.00978, 2.72808, 0 )
+light_energy = 0.8
+shadow_enabled = true
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 0.2
+directional_shadow_bias_split_scale = 0.75

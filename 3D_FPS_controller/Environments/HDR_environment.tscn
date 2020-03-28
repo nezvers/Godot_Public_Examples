@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/HDR/schelde.hdr" type="Texture" id=1]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.5, 0.5, 0.5, 1 )
+ambient_light_energy = 3.0
+ambient_light_sky_contribution = 0.35
+tonemap_mode = 3
+tonemap_exposure = 0.53
+tonemap_white = 6.0
+ssao_light_affect = 0.78
+ssao_blur = 1
+dof_blur_far_distance = 3.22
+
+[node name="environment" type="WorldEnvironment"]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.820488, -0.183991, -0.541245, -0.0477857, -0.965551, 0.255789, -0.569662, -0.184008, -0.801015, 0, 0, 0 )
+light_energy = 2.0
+shadow_enabled = true
+shadow_color = Color( 0.6, 0.6, 0.6, 1 )
