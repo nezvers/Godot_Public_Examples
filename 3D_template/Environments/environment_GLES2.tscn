@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+radiance_size = 0
+sun_latitude = 45.0
+sun_longitude = 180.0
+texture_size = 0
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+ambient_light_energy = 1.46
+ambient_light_sky_contribution = 0.25
+tonemap_mode = 3
+tonemap_exposure = 0.53
+tonemap_white = 6.0
+ssao_light_affect = 0.78
+ssao_blur = 1
+dof_blur_far_distance = 18.19
+dof_blur_far_amount = 0.05
+adjustment_enabled = true
+adjustment_saturation = 1.38
+
+[node name="environment" type="WorldEnvironment"]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.999999, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707106, 0, 0, 0 )
+light_energy = 0.24
+shadow_enabled = true
+shadow_color = Color( 0.5, 0.5, 0.5, 1 )
