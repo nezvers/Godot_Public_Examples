@@ -42,5 +42,3 @@ margin_bottom = 269.0
 mouse_filter = 2
 
 [node name="Camera" parent="." instance=ExtResource( 1 )]
-Dampening = 0.2
-DampingRatio = 1.25

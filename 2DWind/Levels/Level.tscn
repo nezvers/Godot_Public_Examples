@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/GRASS PLAIN VECTOR BACKGROUND BY MJ/sky.png" type="Texture" id=1]
+[ext_resource path="res://Assets/GRASS PLAIN VECTOR BACKGROUND BY MJ/mountin BG.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GRASS PLAIN VECTOR BACKGROUND BY MJ/ground.png" type="Texture" id=3]
+[ext_resource path="res://Assets/GRASS PLAIN VECTOR BACKGROUND BY MJ/grass3.png" type="Texture" id=4]
+[ext_resource path="res://Matereals/NeZvers Wind shader.shader" type="Shader" id=5]
+[ext_resource path="res://Assets/TestSprite.png" type="Texture" id=6]
+[ext_resource path="res://Levels/Bush.gd" type="Script" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 5 )
+shader_param/u_strength = Vector3( 5, 2.5, 2.5 )
+shader_param/u_speed = 1.0
+shader_param/u_offset = Vector2( 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
+shader_param/u_strength = Vector3( 5, 2.5, 2.5 )
+shader_param/u_speed = 1.0
+shader_param/u_offset = Vector2( 0, 0 )
+
+[node name="Level" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="mountin BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 710.522, 509.518 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 54.4503, -4.64607 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="ground" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 795.323, 695.02 )
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Bush" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+material = SubResource( 1 )
+position = Vector2( 343.139, 392.309 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 4 )
+script = ExtResource( 7 )
+strength = 700.0
+
+[node name="TestSprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+material = SubResource( 2 )
+position = Vector2( 579.893, 446.683 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )

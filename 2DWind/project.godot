@@ -1,0 +1,29 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Object",
+"class": "ShakeSpring",
+"language": "GDScript",
+"path": "res://Utils/ShakeSpring.gd"
+} ]
+_global_script_class_icons={
+"ShakeSpring": ""
+}
+
+[application]
+
+config/name="2DFoliageWind"
+run/main_scene="res://Levels/Level.tscn"
+config/icon="res://icon.png"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
