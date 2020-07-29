@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Bullet.gd" type="Script" id=2]
+
+[node name="Bullet" type="Sprite"]
+scale = Vector2( 0.25, 0.124 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+speed = 1200.0
