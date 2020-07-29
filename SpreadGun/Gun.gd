@@ -2,6 +2,7 @@ extends Position2D
 
 onready var SpawnPosition: = $SpawnPosition					#for tracking Position2D where position bullets
 onready var level: = get_tree().root.get_node('Level')		#level be used to hold spawned bullets. You can make it manage them as you need
+
 export (PackedScene) var bullet_scene						#you can drop scene in the inspector and it preloads automatically
 export (Array, float) var spread_angles: = [-45.0, -22.5, 0.0, 22.5, 45.0]	#choose angles for each bullet
 
