@@ -51,7 +51,7 @@ func _init(map:TileMap, _position:Vector2)->void:
 	for shape in shapes:
 		for pos in shape:
 			map.set_cellv(map_position + pos, -1)
-		#yield(map.get_tree().create_timer(0.017), "timeout")
+		yield(map.get_tree().create_timer(0.017), "timeout")
 
 
 
