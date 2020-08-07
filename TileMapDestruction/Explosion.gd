@@ -47,7 +47,7 @@ var shapes: = [
 
 
 func _init(map:TileMap, _position:Vector2)->void:
-	var map_position: Vector2 = map.world_to_map(_position)
+	var map_position: Vector2 = map.world_to_map(map.to_local(_position))
 	for shape in shapes:
 		for pos in shape:
 			map.set_cellv(map_position + pos, -1)
