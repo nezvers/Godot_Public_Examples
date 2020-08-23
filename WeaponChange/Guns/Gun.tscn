@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/platformergraphics-requestpack/raygun.png" type="Texture" id=1]
+[ext_resource path="res://Guns/Gun.gd" type="Script" id=2]
+[ext_resource path="res://Assets/platformergraphics-requestpack/laserBlueBurst.png" type="Texture" id=3]
+[ext_resource path="res://Bullets/Bullet.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Init"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Muzzle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Muzzle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 3.8147e-06, 0 ), Vector2( 3.8147e-06, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Muzzle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.492857, 0.492857 ), Vector2( 0.289286, 0.289286 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/Muzzle:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.0, 45.0 ]
+}
+
+[node name="Gun" type="Sprite"]
+position = Vector2( 9, -6 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+fire_rate = 0.1
+bullet_scene = ExtResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 17, 0 )
+
+[node name="Muzzle" type="Sprite" parent="Position2D"]
+visible = false
+position = Vector2( 3.8147e-06, 0 )
+rotation = 0.785398
+scale = Vector2( 0.289286, 0.289286 )
+texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Init"
+anims/Init = SubResource( 2 )
+anims/Shoot = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

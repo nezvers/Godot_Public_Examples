@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Pickup/Pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/platformergraphics-requestpack/raygunBig.png" type="Texture" id=2]
+
+[node name="PickupAutomatic" instance=ExtResource( 1 )]
+gun_type = "automatic"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )

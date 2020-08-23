@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/platformer-pack-redux-360-assets/PNG/Backgrounds/colored_shroom.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Grass_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Pickup/Pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Pickup/PickupAutomatic.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Pickup/PickupSpread.tscn" type="PackedScene" id=6]
+
+[node name="Level" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( 0, -600 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 360.489, 879.926 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 0, -98.5301 )
+current = true
+limit_left = -128
+limit_bottom = 1024
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196638, 3, 0, 196639, 4, 0, 262154, 0, 0, 262158, 0, 0, 327690, 1, 0, 327697, 0, 0, 327706, 3, 0, 327707, 4, 0, 393223, 0, 0, 393226, 1, 0, 524287, 1, 0, 458752, 3, 0, 458753, 2, 0, 458754, 2, 0, 458755, 2, 0, 458756, 2, 0, 458757, 2, 0, 458758, 2, 0, 458759, 1, 0, 458760, 2, 0, 458761, 2, 0, 458762, 1, 0, 458763, 2, 0, 458764, 2, 0, 458765, 2, 0, 458766, 2, 0, 458767, 2, 0, 458768, 2, 0, 458769, 2, 0, 458770, 2, 0, 458771, 2, 0, 458772, 2, 0, 458773, 2, 0, 458774, 2, 0, 458775, 2, 0, 458776, 2, 0, 458777, 2, 0, 458778, 2, 0, 458779, 2, 0, 458780, 2, 0, 458781, 2, 0, 458782, 2, 0, 458783, 2, 0, 458784, 2, 0, 458785, 2, 0, 458786, 2, 0, 458787, 2, 0, 458788, 2, 0, 458789, 2, 0, 458790, 2, 0, 458791, 2, 0, 458792, 2, 0, 458793, 2, 0, 458794, 2, 0, 458795, 2, 0, 458796, 2, 0, 458797, 2, 0, 458798, 2, 0, 458799, 2, 0, 458800, 2, 0, 458801, 2, 0, 458802, 2, 0, 458803, 2, 0, 458804, 2, 0, 458805, 2, 0, 458806, 2, 0, 458807, 2, 0, 458808, 2, 0, 458809, 2, 0, 458810, 2, 0, 458811, 2, 0, 458812, 2, 0, 458813, 2, 0, 458814, 2, 0, 458815, 2, 0, 458816, 2, 0, 458817, 2, 0, 458818, 2, 0, 458819, 2, 0, 458820, 2, 0, 458821, 2, 0, 458822, 2, 0, 458823, 2, 0, 458824, 2, 0 )
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="Normal" parent="Pickups" instance=ExtResource( 4 )]
+position = Vector2( 593.34, 858.828 )
+
+[node name="PickupAutomatic" parent="Pickups" instance=ExtResource( 5 )]
+position = Vector2( 1671.87, 858.828 )
+
+[node name="PickupSpread" parent="Pickups" instance=ExtResource( 6 )]
+position = Vector2( 3939.84, 357.951 )

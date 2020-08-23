@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Guns/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/platformergraphics-requestpack/raygunBig.png" type="Texture" id=2]
+
+[node name="Automatic" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+fire_rate = 0.2
+single_shot = false
