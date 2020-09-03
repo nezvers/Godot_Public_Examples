@@ -1,13 +1,12 @@
-# Weapon change
-It's for LOD change detection and sending information to those objects that needs to change.
-You might have better mesh management with multimesh, in that case please let me know or make a pull request.
+# Pendulum
+Basic physics calculations for pendulum.
 For downloading just this project you can use [DownGit](https://minhaskamal.github.io/DownGit/)     
 
 ## Tutorial
 <div align="left">
-      <a href="https://youtu.be/kjqjl4Dwnnc">
+      <a href="https://youtu.be/J1ClXGZIh00">
      <img 
-      src="https://img.youtube.com/vi/kjqjl4Dwnnc/0.jpg" 
+      src="https://img.youtube.com/vi/J1ClXGZIh00/0.jpg" 
       alt="State machine walkthrough" 
       style="width:100%;">
       </a>
