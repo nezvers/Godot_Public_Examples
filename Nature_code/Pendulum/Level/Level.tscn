@@ -5,5 +5,5 @@
 [node name="Level" type="Node2D"]
 
 [node name="Pendulum" parent="." instance=ExtResource( 1 )]
-position = Vector2( 147.979, 43.234 )
-Pendulum_position = Vector2( 200, 10 )
+position = Vector2( 150, 30 )
+end_position = Vector2( 50, 30 )
