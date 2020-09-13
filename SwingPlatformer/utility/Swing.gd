@@ -21,7 +21,8 @@ func set_start_position(start_pos:Vector2, end_pos:Vector2):
 	pivot_point = start_pos
 	end_position = end_pos
 	arm_length = Vector2.ZERO.distance_to(end_position-pivot_point)
-	angle = Vector2.ZERO.angle_to(end_position-pivot_point) - deg2rad(-90)
+	angle = end_position.angle()# - deg2rad(-90)
+	print(end_position, ' ', pivot_point, ' ', rad2deg(angle))
 	angular_velocity = 0.0
 	angular_acceleration = 0.0
 

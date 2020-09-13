@@ -3,7 +3,8 @@ class_name Player
 
 onready var anim:AnimationPlayer = $AnimationPlayer
 onready var audio:AudioStreamPlayer = $AudioStreamPlayer
-onready var swing:Node2D = preload("res://utility/Swing.gd").new()
+onready var rope: = $RopePosition/Rope
+onready var sm: = $PlayerStateMachine
 
 var scaler: = Vector2(1.0, 1.0)
 
@@ -29,6 +30,8 @@ func unhandled_input(event)->void:
 		jump = true
 	elif event.is_action_released("jump"):
 		jump = false
+	elif event.is_action_pressed("click"):
+		sm.transition_to("Swing")
 
 func visual_process(delta:float):
 	if abs(direction.x)>= 0.001:

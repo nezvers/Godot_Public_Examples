@@ -13,9 +13,10 @@ func _ready()->void:				#Set the first state
 	yield(owner, "ready")			#wait when scene root is ready because states need to fetch nodes in the scene
 	
 	for st in script_array:
-		var inst = st.new(self)		#Create new instance of State
-		var n:String = inst.name	#All States should set their names to create their keys for Dictionary
-		states[n] = inst			#Put the state into Dictionary and use their name as key
+		if st != null:
+			var inst = st.new(self)		#Create new instance of State
+			var n:String = inst.name	#All States should set their names to create their keys for Dictionary
+			states[n] = inst			#Put the state into Dictionary and use their name as key
 	
 	#Base class doesn't implement starting state, should be implemented by inherited script (Example PlayerStateMachine)
 
@@ -33,7 +34,7 @@ func transition_to(next_state: String, msg:Dictionary = {})->void:		#states call
 	if !states.has(next_state):						#check if state is in dictionary
 		print("No state: ", next_state)
 		return
-	
+	print(current_state, " to ", next_state)
 	var next = states[next_state]					#reference the next state
 	state.exit()									#Allow old state to take care on it's exit method
 	state = next									#set new state

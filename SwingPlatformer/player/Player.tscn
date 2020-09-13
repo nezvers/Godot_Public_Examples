@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Player-sheet.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://player/States/PlayerIdle.gd" type="Script" id=4]
 [ext_resource path="res://player/States/PlayerJump.gd" type="Script" id=5]
 [ext_resource path="res://player/States/PlayerWalk.gd" type="Script" id=6]
+[ext_resource path="res://player/States/PlayerSwing.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 7 )
@@ -76,6 +77,7 @@ tracks/1/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -96,9 +98,16 @@ anims/Idle = SubResource( 2 )
 anims/Jump = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
+[node name="RopePosition" type="Position2D" parent="."]
+position = Vector2( 0, -6 )
+
+[node name="Rope" type="Line2D" parent="RopePosition"]
+width = 1.0
+default_color = Color( 0.701961, 0.701961, 0.701961, 1 )
+
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
-script_array = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
+script_array = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ]
 start_state = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
