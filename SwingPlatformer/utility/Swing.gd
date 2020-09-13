@@ -6,7 +6,7 @@ export (Vector2) var end_position: = Vector2() 		#pendulum itself
 var arm_length:float
 var angle											#Get angle between position + add godot angle offset
 
-export (float) var gravity = 0.3 * 60
+export (float) var gravity = 0.2 * 60
 export (float) var damping = 0.999 							#Arbitrary dampening force
 
 var angular_velocity = 0.0
