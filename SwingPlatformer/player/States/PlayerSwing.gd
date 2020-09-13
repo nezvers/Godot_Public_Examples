@@ -7,6 +7,7 @@ var trigger: = true
 var connection: = false
 var point: = Vector2.ZERO
 var distance: = 16.0 * 7.0
+var move: = Vector2.ZERO
 
 func _init(_sm).(_sm)->void:
 	name = "Swing"
@@ -15,10 +16,12 @@ func _init(_sm).(_sm)->void:
 func enter(_msg:Dictionary = {})->void:
 	player.anim.play("Jump")
 	trigger = true
+	move = player.velocity
 
 func exit()->void:
 	rope.points = []
 	connection = false
+	player.velocity = move
 
 func unhandled_input(event:InputEvent)->void:
 	if event.is_action_released("click"):
@@ -32,11 +35,18 @@ func physics_process(delta:float)->void:
 		if connection:
 			set_pendulum()
 	if !connection:													#Failed connection
+		player.air_physics_process(delta)
 		state_check()
 		return
-	player.air_physics_process(delta)
-	
-	swing.process_velocity(delta)
+	if is_equal_approx(delta, 0.0):		#in case going to divide by 0
+		return
+	var swing_move:Vector2 = swing.process_velocity(delta)
+	move = swing_move / delta
+	var collision = player.move_and_collide(move* delta)
+	if collision:
+		move = Vector2.ZERO
+		state_check()
+		return
 	var offset: = point - rope.global_position
 	rope.points = PoolVector2Array([offset+swing.end_position, offset+swing.pivot_point])
 	
@@ -66,4 +76,4 @@ func get_point()->void:
 		point = result.position
 
 func set_pendulum()->void:
-	swing.set_start_position(Vector2.ZERO, point-rope.global_position)
+	swing.set_start_position(Vector2.ZERO, rope.global_position-point)
