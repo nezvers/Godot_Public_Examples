@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Walls.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=2]
+
+[node name="Level" type="Node2D"]
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="Walls" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 0, -8 )
+scale = Vector2( 20, 1 )
+
+[node name="Walls2" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 0, 172 )
+scale = Vector2( 20, 1 )
+
+[node name="Walls3" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( -7, -5 )
+scale = Vector2( 1, 12 )
+
+[node name="Walls4" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 313, -6 )
+scale = Vector2( 1, 12 )
+
+[node name="Walls5" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( -1, 38 )
+rotation = -0.593412
+scale = Vector2( 5, 1 )
+
+[node name="Walls6" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 91, 193 )
+rotation = -0.959931
+scale = Vector2( 5, 5 )
+
+[node name="Walls7" parent="walls" instance=ExtResource( 1 )]
+position = Vector2( 161, 3 )
+rotation = -0.750492
+scale = Vector2( 5, 5 )
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+position = Vector2( 82, 94 )
