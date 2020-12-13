@@ -1,8 +1,8 @@
 
 extends Camera2D
 
-export var tension:float setget set_tension
-export var dampening:float setget set_dampening
+export var tension:float = 75.0 setget set_tension
+export var dampening:float = 0.2 setget set_dampening
 var spring: = ShakeSpring.new(tension, dampening)
 
 func set_tension(value:float)->void:
