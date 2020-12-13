@@ -1,21 +1,30 @@
 
 extends Camera2D
 
-onready var spring: = ShakeSpring.new(0.025, 0.025)
+export var tension:float setget set_tension
+export var dampening:float setget set_dampening
+var spring: = ShakeSpring.new(tension, dampening)
 
-var target: = Vector2.ZERO
+func set_tension(value:float)->void:
+	tension = value
+	spring.tension = value
+func set_dampening(value:float)->void:
+	dampening = value
+	spring.dampening = value
+
 
 func _ready()->void:
 	Event.connect("Camerashake", self, "apply_camerashake")
 
 func _unhandled_input(event)->void:
 	if event.is_action_pressed("click"):
-		var strength: = 2000.0
-		var impulse: = Vector2(-strength/2 +(randf()*strength), -strength/2 +(randf()*strength))
+		var strength: = 10.0
+		var direction: = Vector2.RIGHT.rotated(PI * 2 * randf())
+		var impulse: = direction * strength
 		Event.emit_signal("Camerashake", impulse)
 
 func apply_camerashake(impulse:Vector2)->void:
 	spring.apply_impulse(impulse)
 
 func _process(delta)->void: #Happens every frame
-	position = target + spring.shake_process(delta) #implemention is up to you
+	offset = spring.shake_process(delta) #implemention is up to you

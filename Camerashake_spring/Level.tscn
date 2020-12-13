@@ -40,5 +40,10 @@ margin_top = 229.0
 margin_right = -419.0
 margin_bottom = 269.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera" parent="." instance=ExtResource( 1 )]
+tension = 2.0
+dampening = 0.1
