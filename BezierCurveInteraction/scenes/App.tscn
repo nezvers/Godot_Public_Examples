@@ -28,4 +28,3 @@ margin_bottom = 586.0
 size_flags_horizontal = 3
 color = Color( 0.0251736, 0, 0.113281, 1 )
 script = ExtResource( 1 )
-handles = 4
