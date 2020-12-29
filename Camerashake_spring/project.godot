@@ -28,6 +28,10 @@ config/icon="res://icon.png"
 
 Event="*res://Event.gd"
 
+[debug]
+
+settings/fps/force_fps=15
+
 [input]
 
 click={

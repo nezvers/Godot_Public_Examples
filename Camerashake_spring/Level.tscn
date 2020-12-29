@@ -45,5 +45,5 @@ __meta__ = {
 }
 
 [node name="Camera" parent="." instance=ExtResource( 1 )]
-tension = 75.0
-dampening = 0.2
+tension = 1.0
+dampening = 0.5

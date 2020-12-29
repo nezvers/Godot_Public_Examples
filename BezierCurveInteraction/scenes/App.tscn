@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Bezier.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[node name="App" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 593.0
+margin_bottom = 593.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Margin"]
+margin_right = 586.0
+margin_bottom = 586.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Margin/PanelContainer"]
+margin_right = 586.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+color = Color( 0.0251736, 0, 0.113281, 1 )
+script = ExtResource( 1 )
+handles = 4
