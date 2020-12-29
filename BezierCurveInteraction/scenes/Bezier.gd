@@ -1,33 +1,20 @@
 extends ColorRect
 
-#Array of normalized values (0.0, 0.0) to (1.0, 1.0)
-#Useful later to get values from start to end
-var points: = []
-func set_points()->void:
-	points = [Vector2(0.0, 0.0)]
-	for i in range(1, positions.size()-1):
-		var p:Vector2 = positions[i] / (positions.back() - positions.front())
-		points.append(p)
-	points.append(Vector2(1.0, 1.0))
+
 
 export (int) var handles: = 3 setget set_handles
 func set_handles(value:int)->void:
 # warning-ignore:narrowing_conversion
 	handles = max(value, 2)
-	points = [Vector2(0.0, 0.0)]
-	var mid:int = handles - 2
-	var div:float = 1.0 / (handles - 1)
-	for i in mid:
-		points.append((i+1) * div)
-	points.append(Vector2(1.0, 1.0))
 	set_positions()
+	update()
 
 #Resolution of the line
 export (int) var resolution: = 5 setget set_resolution
 func set_resolution(value:int)->void:
 # warning-ignore:narrowing_conversion
 	resolution = max(value, 2)
-	set_handles(handles)
+	update()
 
 
 func _ready()->void:
@@ -37,7 +24,6 @@ func _ready()->void:
 	connect("mouse_exited", self, "mouse_exited")
 	set_process(false)
 	set_handles(handles)
-	update()
 	OS.center_window()
 
 var hovering: = false
@@ -63,20 +49,20 @@ func get_area()->Rect2:
 # handle positions on the node
 var positions: = []
 func set_positions()->void:
-	positions = []
+	positions.clear()
 	var rect: = get_area()
-	for pos in points:
-		var p:Vector2 = rect.position + rect.size*pos
+	var div:float = 1.0 / (handles-1)
+	for j in handles:
+		var p:Vector2 = rect.position + rect.size*(j*div)
+		print(j)
 		positions.append(p)
-	get_bezier()
 
 # find which is closest handle (-1 is none)
-func get_closest_point()->int:
-	var mPos: = get_local_mouse_position()
+func get_closest_point(pos:Vector2)->int:
 	var dist: = 30.0
 	var index: = -1
 	for i in range(1, positions.size()-1):
-		var pDist:float = (mPos - positions[i]).length()
+		var pDist:float = (pos - positions[i]).length()
 		if pDist < dist:
 			dist = pDist
 			index = i
@@ -85,29 +71,29 @@ func get_closest_point()->int:
 var closest:int = -1
 var dragging: = false
 func _process(_delta:float)->void:
-	closest = get_closest_point()
+	var mouse: = get_local_mouse_position()
+	closest = get_closest_point(mouse)
 	if closest > -1 && Input.is_mouse_button_pressed(1):
 		dragging = true
 	else:
 		dragging = false
 	
 	if dragging:
-		var mouse: = get_local_mouse_position()
 		positions[closest].x = clamp(mouse.x,positions.front().x, positions.back().x)
 		positions[closest].y = clamp(mouse.y,positions.back().y, positions.front().y)
-		get_bezier()
-		set_points()
 	update()
 
 # plot the bezier 
-var bezier: = []
-func get_bezier()->void:
-	bezier = []
+func get_bezier(arr:Array)->Array:
+	if arr.empty():
+		return []
+	var bezier = []
 	var div:float = 1.0 / resolution
 	for i in resolution:
 		var t:float = i*div
-		bezier.append(bezier_interpolate(positions, t)[0])
-	bezier.append(positions.back())
+		bezier.append(bezier_interpolate(arr, t)[0])
+	bezier.append(arr.back())
+	return bezier
 
 #recursive function that interpolates between lines down to last point
 func bezier_interpolate(handlePoints:Array, t:float)->Array:
@@ -122,21 +108,27 @@ func bezier_interpolate(handlePoints:Array, t:float)->Array:
 
 func _draw()->void:
 	#draw points
-	for i in positions.size():
-		var pos:Vector2 = positions[i]
-		var col: = Color.white
-		var r: = 5.0
-		if i == closest:
-			r = 10.0
-			if dragging:
-				col = Color.red
-		draw_arc(pos, r, 0.0, PI*2, 5, col)
+	draw_handles(positions, closest, dragging, Color.white, Color.yellow)
 	
 	#draw bezier lines
+	draw_bezier(positions, Color.green)
+
+func draw_handles(arr:Array, dragIndex:int, isDragged:bool, col1:Color, col2:Color)->void:
+	for i in arr.size():
+		var pos:Vector2 = arr[i]
+		var col: = col1
+		var r: = 5.0
+		if i == dragIndex:
+			r = 10.0
+			if isDragged:
+				col = col2
+		draw_arc(pos, r, 0.0, PI*2, 5, col)
+
+func draw_bezier(arr:Array, col:Color)->void:
+	var bezier:Array = get_bezier(arr)
 	for i in bezier.size()-1:
 		var p1:Vector2 = bezier[i]
 		var p2:Vector2 = bezier[i+1]
-		var col = Color.white
 		draw_line(p1,p2,col)
 
 
