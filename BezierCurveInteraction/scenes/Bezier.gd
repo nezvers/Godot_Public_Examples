@@ -1,12 +1,12 @@
-extends ColorRect
+extends Control
 
-export var handleCount:int = 3 setget set_handleCount
+export var handleCount:int = 4 setget set_handleCount
 func set_handleCount(value:int)->void:
 # warning-ignore:narrowing_conversion
 	handleCount = max(2, value)
 	reset_handles()
 
-export var resolution:int = 5 setget set_resolution
+export var resolution:int = 10 setget set_resolution
 func set_resolution(value:int)->void:
 # warning-ignore:narrowing_conversion
 	resolution = max(2, value)
@@ -70,7 +70,7 @@ func get_closest_handle()->int:
 	var dist:float = 30
 	var mousePos: = get_local_mouse_position()
 	var index: = -1
-	for i in handleList.size():
+	for i in range(1, handleList.size()-1):
 		var d:float = (mousePos - handleList[i]).length()
 		if d < dist:
 			dist = d
@@ -90,6 +90,12 @@ func _process(delta:float)->void:
 				mousePos.y = clamp(mousePos.y, rect.position.y+rect.size.y, rect.position.y)
 				handleList[dragIndex] = mousePos
 				update()
+			else:
+				dragIndex = -1
+				update()
+		else:
+			dragIndex = -1
+			update()
 
 func get_bezier_value(points:Array, perc:float)->Array:
 	if points.size() == 1:
@@ -101,11 +107,14 @@ func get_bezier_value(points:Array, perc:float)->Array:
 	return get_bezier_value(newPoints, perc)
 
 func _draw()->void:
-	for i in handleList.size():
-		var pos:Vector2 = handleList[i]
-		draw_circle(pos, 5, Color.white)
+	draw_handles(handleList, 5.0, 0.0)
 	
 	draw_bezier_2D(handleList, resolution)
+
+func draw_handles(arr:Array, r:float, a:float, col1:Color=Color.white)->void:
+	for i in arr.size():
+		var pos:Vector2 = arr[i]
+		draw_arc(pos, r, a, a+2*PI, 5, col1)
 
 func draw_bezier_2D(h:Array, res:int, col:Color = Color.white)->void:
 	var points: = []
