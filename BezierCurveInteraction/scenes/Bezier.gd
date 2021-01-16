@@ -1,30 +1,57 @@
 extends ColorRect
 
-
-
-export (int) var handles: = 3 setget set_handles
-func set_handles(value:int)->void:
+export var handleCount:int = 3 setget set_handleCount
+func set_handleCount(value:int)->void:
 # warning-ignore:narrowing_conversion
-	handles = max(value, 2)
-	set_positions()
-	update()
+	handleCount = max(2, value)
+	reset_handles()
 
-#Resolution of the line
-export (int) var resolution: = 5 setget set_resolution
+export var resolution:int = 5 setget set_resolution
 func set_resolution(value:int)->void:
 # warning-ignore:narrowing_conversion
-	resolution = max(value, 2)
+	resolution = max(2, value)
+
+func get_area()->Rect2:
+	var margin: = Vector2(10.0, 10.0)
+	var size: = rect_size - margin * 2
+	var origin: = margin
+	origin.y += size.y
+	size.y *= -1
+	return Rect2(origin, size)
+
+var handleList:Array
+func reset_handles()->void:
+	var area:Rect2 = get_area()
+	handleList.clear()
+	for i in handleCount:
+		var perc:float = float(i)/float(handleCount-1)
+		handleList.append(area.position+area.size*perc)
 	update()
 
 
 func _ready()->void:
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	connect("mouse_entered", self, "mouse_entered")
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	connect("mouse_exited", self, "mouse_exited")
+	# warning-ignore:return_value_discarded
+	connect("resized", self, "resized")
 	set_process(false)
-	set_handles(handles)
-	OS.center_window()
+	set_handleCount(handleCount)
+
+func resized()->void:
+	var rect: = get_area()
+	var start:Vector2 = handleList.front()
+	var end:Vector2 = handleList.back()
+	var dist: = end - start
+	
+	for i in handleList.size():
+		var perc:Vector2 = (handleList[i] - start) / dist
+		handleList[i] = rect.position + rect.size * perc
+	update()
+
+func point_in_rect(r:Rect2, p:Vector2)->bool:
+	return p.x > r.position.x && p.x < r.position.x+r.size.x && p.y < r.position.y && p.y > r.position.y + r.size.y
 
 var hovering: = false
 func mouse_entered()->void:
@@ -35,101 +62,61 @@ func mouse_entered()->void:
 func mouse_exited()->void:
 	set_process(false)
 	hovering = false
+	dragIndex = -1
 	update()
 
-# Arbitrary rectangle padded and inverted Y direction
-func get_area()->Rect2:
-	var margin: = Vector2(10.0, 10.0)
-	var size: = rect_size - margin * 2
-	var origin: = rect_position + margin
-	origin.y += size.y
-	size.y *= -1
-	return Rect2(origin, size)
-
-# handle positions on the node
-var positions: = []
-func set_positions()->void:
-	positions.clear()
-	var rect: = get_area()
-	var div:float = 1.0 / (handles-1)
-	for j in handles:
-		var p:Vector2 = rect.position + rect.size*(j*div)
-		print(j)
-		positions.append(p)
-
-# find which is closest handle (-1 is none)
-func get_closest_point(pos:Vector2)->int:
-	var dist: = 30.0
+var dragIndex: = -1
+func get_closest_handle()->int:
+	var dist:float = 30
+	var mousePos: = get_local_mouse_position()
 	var index: = -1
-	for i in range(1, positions.size()-1):
-		var pDist:float = (pos - positions[i]).length()
-		if pDist < dist:
-			dist = pDist
+	for i in handleList.size():
+		var d:float = (mousePos - handleList[i]).length()
+		if d < dist:
+			dist = d
 			index = i
 	return index
 
-var closest:int = -1
-var dragging: = false
-func _process(_delta:float)->void:
-	var mouse: = get_local_mouse_position()
-	closest = get_closest_point(mouse)
-	if closest > -1 && Input.is_mouse_button_pressed(1):
-		dragging = true
-	else:
-		dragging = false
-	
-	if dragging:
-		positions[closest].x = clamp(mouse.x,positions.front().x, positions.back().x)
-		positions[closest].y = clamp(mouse.y,positions.back().y, positions.front().y)
-	update()
+# warning-ignore:unused_argument
+func _process(delta:float)->void:
+	if dragIndex == -1:
+		dragIndex = get_closest_handle()
+	if dragIndex != -1:
+		if Input.is_mouse_button_pressed(1):
+			var mousePos: = get_local_mouse_position()
+			var rect: = get_area()
+			if point_in_rect(rect, mousePos):
+				mousePos.x = clamp(mousePos.x, rect.position.x, rect.position.x+rect.size.x)
+				mousePos.y = clamp(mousePos.y, rect.position.y+rect.size.y, rect.position.y)
+				handleList[dragIndex] = mousePos
+				update()
 
-# plot the bezier 
-func get_bezier(arr:Array)->Array:
-	if arr.empty():
-		return []
-	var bezier = []
-	var div:float = 1.0 / resolution
-	for i in resolution:
-		var t:float = i*div
-		bezier.append(bezier_interpolate(arr, t)[0])
-	bezier.append(arr.back())
-	return bezier
-
-#recursive function that interpolates between lines down to last point
-func bezier_interpolate(handlePoints:Array, t:float)->Array:
-	var newHandles: = []
-	for i in handlePoints.size()-1:
-		var pos:Vector2 = handlePoints[i].linear_interpolate(handlePoints[i+1], t)
-		newHandles.append(pos)
-	if newHandles.size() == 1:
-		return newHandles
-	else:
-		return bezier_interpolate(newHandles, t)
+func get_bezier_value(points:Array, perc:float)->Array:
+	if points.size() == 1:
+		return points
+	var newPoints: = []
+	for i in points.size()-1:
+		var p:Vector2 = points[i] + (points[i+1] - points[i]) * perc
+		newPoints.append(p)
+	return get_bezier_value(newPoints, perc)
 
 func _draw()->void:
-	#draw points
-	draw_handles(positions, closest, dragging, Color.white, Color.yellow)
+	for i in handleList.size():
+		var pos:Vector2 = handleList[i]
+		draw_circle(pos, 5, Color.white)
 	
-	#draw bezier lines
-	draw_bezier(positions, Color.green)
+	draw_bezier_2D(handleList, resolution)
 
-func draw_handles(arr:Array, dragIndex:int, isDragged:bool, col1:Color, col2:Color)->void:
-	for i in arr.size():
-		var pos:Vector2 = arr[i]
-		var col: = col1
-		var r: = 5.0
-		if i == dragIndex:
-			r = 10.0
-			if isDragged:
-				col = col2
-		draw_arc(pos, r, 0.0, PI*2, 5, col)
+func draw_bezier_2D(h:Array, res:int, col:Color = Color.white)->void:
+	var points: = []
+	for i in res+1:
+		var pos:Vector2 = get_bezier_value(h,i/float(res))[0]
+		points.append(pos)
+	
+	for i in points.size()-1:
+		draw_line(points[i], points[i+1], col)
 
-func draw_bezier(arr:Array, col:Color)->void:
-	var bezier:Array = get_bezier(arr)
-	for i in bezier.size()-1:
-		var p1:Vector2 = bezier[i]
-		var p2:Vector2 = bezier[i+1]
-		draw_line(p1,p2,col)
+
 
 
 
