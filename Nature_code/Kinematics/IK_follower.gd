@@ -38,13 +38,13 @@ func _ready()->void:
 	tentacle = Segment.new(default_pos, 20, default_angle)
 	segments.append(tentacle)           # used for drawing lines
 	var current: Segment = tentacle     # for iterration in for loop
-	for i in range(segment_count):
+	for _i in range(segment_count):
 		var seg:Segment = Segment.new(current.start, default_length, default_angle)   #new segment
 		current.parent = seg        # add new segment as parent
 		current = seg               # next current will be new segment
 		segments.append(seg)        # used for drawing lines
 
-func _process(delta)->void:
+func _process(_delta)->void:
 	tentacle.end = get_local_mouse_position()
 	tentacle.update_self()
 	update()    #call draw call

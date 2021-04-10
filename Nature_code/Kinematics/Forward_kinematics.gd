@@ -48,13 +48,13 @@ func _ready()->void:
 	root = Segment.new(default_pos, default_length, default_angle)
 	segments.append(root)           # used for drawing lines
 	var current: Segment = root     # for iterration in for loop
-	for i in range(segment_count):
+	for _i in range(segment_count):
 		var seg:Segment = Segment.new(current.end, default_length, 0)   #new segment
 		current.child = seg     # add new segment as child
 		current = seg           # next current will be new segment
 		segments.append(seg)    # used for drawing lines
 
-func _process(delta)->void:
+func _process(_delta)->void:
 	root.selfAngle = (get_local_mouse_position() - root.start).angle()
 	root.update_self()
 	update()    #call draw call
