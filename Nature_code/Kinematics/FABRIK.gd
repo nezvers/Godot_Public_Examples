@@ -23,10 +23,9 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("mb_left"):
 		pinPos = get_local_mouse_position()
 		posList[0] = pinPos
-	
 
 func _ready()->void:
-	pinPos = get_viewport_rect().size * Vector2(0.5, 0.90)
+	pinPos = get_viewport_rect().size * Vector2(0.5, 0.9)
 	
 	# add point list including pinPos by default pointing up
 	for i in segmentCount +1:
@@ -34,6 +33,7 @@ func _ready()->void:
 
 func _process(_delta:float)->void:
 	var distance:float = (endPos -pinPos).length()
+	
 	# out of reach, no point of IK
 	if distance >= totalLength:
 		straight_reach()
