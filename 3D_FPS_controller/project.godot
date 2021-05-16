@@ -8,9 +8,50 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://utility/statemachine/State.gd"
+}, {
+"base": "State",
+"class": "StateGrounded",
+"language": "GDScript",
+"path": "res://Player/States/StateGrounded.gd"
+}, {
+"base": "StateGrounded",
+"class": "StateIdle",
+"language": "GDScript",
+"path": "res://Player/States/StateIdle.gd"
+}, {
+"base": "State",
+"class": "StateJump",
+"language": "GDScript",
+"path": "res://Player/States/StateJump.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://utility/statemachine/StateMachine.gd"
+}, {
+"base": "StateGrounded",
+"class": "StateRun",
+"language": "GDScript",
+"path": "res://Player/States/StateRun.gd"
+}, {
+"base": "StateGrounded",
+"class": "StateWalk",
+"language": "GDScript",
+"path": "res://Player/States/StateWalk.gd"
+} ]
 _global_script_class_icons={
-
+"State": "",
+"StateGrounded": "",
+"StateIdle": "",
+"StateJump": "",
+"StateMachine": "",
+"StateRun": "",
+"StateWalk": ""
 }
 
 [application]
@@ -18,6 +59,10 @@ _global_script_class_icons={
 config/name="3D FPS controller"
 run/main_scene="res://Levels/Level.scn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Events="*res://Autoload/Events.gd"
 
 [display]
 
@@ -74,12 +119,18 @@ run={
 
 [layer_names]
 
+3d_render/layer_1="General"
 3d_physics/layer_1="environment"
+3d_render/layer_2="Ignore"
 3d_physics/layer_2="player"
 
 [memory]
 
 multithread/thread_rid_pool_prealloc=60
+
+[physics]
+
+3d/physics_engine="Bullet"
 
 [rendering]
 
