@@ -13,12 +13,14 @@ export (float) var mouseSensitivity:float = 0.3
 
 onready var standShape: = $StandShape
 onready var crouchShape: = $CrouchShape
+onready var headCheck: = $HeadCheck
 onready var body: = $Body
 onready var cam: = $Body/Camera
 onready var rRay: = $Body/RightRay
 onready var lRay: = $Body/LeftRay
 onready var frontRay: = $Body/FrontRay
 onready var jumpBuffer: = $JumpBuffer
+onready var tween: = $Tween
 onready var sm: = $StateMachine
 
 const snapLength: = 0.2
@@ -48,6 +50,7 @@ var btnUp:float
 var btnDown:float
 var btnJump: = false
 var btnRun: = false
+var btnCrouch: = false
 
 func _ready():
 # warning-ignore:return_value_discarded
@@ -76,10 +79,10 @@ func input(event:InputEvent):
 		btnJump = true
 	elif event.is_action_released("jump"):
 		btnJump = false
-	elif event.is_action_pressed("run"):
-		btnRun = true
-	elif event.is_action_released("run"):
-		btnRun = false
+	elif event.is_action("run") && !event.is_echo():
+		btnRun = event.is_action_pressed("run")
+	elif event.is_action("crouch") && !event.is_echo():
+		btnCrouch = event.is_action_pressed("crouch")
 
 
 
@@ -198,6 +201,7 @@ func ground_check()->void:
 	if !isGrounded:
 		floorNormal = Vector3.UP
 		snap = Vector3.ZERO
+
 
 func jumping_event()->void:
 	pass

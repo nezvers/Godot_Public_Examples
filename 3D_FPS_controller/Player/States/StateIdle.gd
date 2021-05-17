@@ -13,6 +13,10 @@ func exit()->void:
 func state_check()->void:
 	if ground_state_check():
 		return
+	if entity.btnCrouch:
+		sm.transition("Crouch")
+		return
+	
 	if entity.dir.length() >0.01:
 		if entity.btnRun:
 			sm.transition("Run")

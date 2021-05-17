@@ -23,4 +23,7 @@ func state_check()->void:
 				sm.transition("Walk")
 		else:
 			sm.transition("Run")
+	else:
+		if entity.btnCrouch:
+			sm.transition("Crouch")
 
