@@ -132,6 +132,7 @@ func apply_movement()->void:
 		var col: = get_slide_collision(i)
 		#don't apply returned velocity
 		if col.collider.collision_layer == 2:
+			velocity.y = 0.0
 			return
 	velocity = tempVelocity
 
