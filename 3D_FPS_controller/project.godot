@@ -129,7 +129,8 @@ run={
 3d_render/layer_1="General"
 3d_physics/layer_1="environment"
 3d_render/layer_2="Ignore"
-3d_physics/layer_2="player"
+3d_physics/layer_2="moving_platform"
+3d_physics/layer_3="player"
 
 [memory]
 

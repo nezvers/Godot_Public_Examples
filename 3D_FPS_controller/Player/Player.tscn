@@ -10,23 +10,26 @@
 [ext_resource path="res://Player/States/StateCrouch.gd" type="Script" id=8]
 
 [sub_resource type="CapsuleShape" id=1]
+margin = 0.001
 radius = 0.3
 height = 1.3
 
 [sub_resource type="CapsuleShape" id=2]
+margin = 0.001
 radius = 0.3
 height = 0.28
 
-[sub_resource type="SphereShape" id=4]
+[sub_resource type="SphereShape" id=3]
 radius = 0.3
 
-[sub_resource type="CapsuleMesh" id=3]
+[sub_resource type="CapsuleMesh" id=4]
 radius = 0.3
 mid_height = 1.3
 
 [node name="Player" type="KinematicBody"]
 input_ray_pickable = false
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="StandShape" type="CollisionShape" parent="."]
@@ -43,7 +46,7 @@ input_ray_pickable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="HeadCheck"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5999, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Body" type="Spatial" parent="."]
@@ -51,7 +54,7 @@ disabled = true
 [node name="MeshInstance" type="MeshInstance" parent="Body"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.95, 0 )
 layers = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Camera" type="Spatial" parent="Body"]

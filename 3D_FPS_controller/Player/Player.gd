@@ -90,14 +90,14 @@ func physics(delta:float)->void:
 	get_dir()
 	get_movement(delta)
 	get_gravity(delta)
-	velocity = move_and_slide_with_snap(velocity, snap, Vector3.UP)
+	apply_movement()
 	ground_check()
 
 func physics_ground(delta:float)->void:
 	get_dir()
 	get_movement(delta)
 	get_gravity_ground(delta)
-	velocity = move_and_slide_with_snap(velocity, snap, Vector3.UP)
+	apply_movement()
 	ground_check()
 
 func physics_air(delta:float)->void:
@@ -119,11 +119,21 @@ func get_dir()->void:
 	dir = dir.normalized()
 
 func get_movement(delta:float)->void:
-	velocity = velocity.linear_interpolate(dir *spd +(velocity *Vector3.UP) +(get_floor_velocity() *vecH), acc *delta)
+	velocity = velocity.linear_interpolate(dir *spd +(velocity *Vector3.UP), acc *delta)
 
 func get_movement_air(delta:float)->void:
 	velocity = velocity.linear_interpolate(dir *spd +(velocity *Vector3.UP), acc *delta *airControl)
 
+func apply_movement()->void:
+	var tempVelocity: = velocity
+	tempVelocity = move_and_slide_with_snap(velocity +(get_floor_velocity() *vecH), snap, Vector3.UP)
+	#check if standing on moving platform 
+	for i in get_slide_count():
+		var col: = get_slide_collision(i)
+		#don't apply returned velocity
+		if col.collider.collision_layer == 2:
+			return
+	velocity = tempVelocity
 
 func get_gravity(delta:float)->void:
 	if isGrounded:
