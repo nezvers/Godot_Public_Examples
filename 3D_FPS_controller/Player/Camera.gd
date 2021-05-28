@@ -12,7 +12,7 @@ func _ready()->void:
 
 func _process(delta:float)->void:
 	var fps:float = Engine.get_frames_per_second()
-	
+
 	if fps > physicsFPS:
 		global_transform = global_transform.interpolate_with(cameraPos.global_transform, interpolationSpeed *delta *fps/physicsFPS)
 	else:

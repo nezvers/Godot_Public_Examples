@@ -13,6 +13,7 @@ func _ready()->void:
 	set_process_unhandled_input(false)
 
 func _process(delta:float)->void:
+	#currentState.physics(delta)
 	currentState.process(delta)
 
 func _physics_process(delta:float)->void:

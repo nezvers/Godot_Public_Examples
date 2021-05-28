@@ -23,10 +23,8 @@ func process(delta:float)->void:
 
 # warning-ignore:unused_argument
 func physics(delta:float)->void:
-	if !isGrounded:
-		if entity.isGrounded:
-			headShape.disabled = false
-			isGrounded = true
+	if !isGrounded && entity.isGrounded:
+		isGrounded = true
 	entity.physics(delta)
 
 # warning-ignore:unused_argument
@@ -38,8 +36,8 @@ func enter(data:Dictionary={})->void:
 	entity.spd = entity.crouchSpd
 	entity.standShape.disabled = true
 	entity.crouchShape.disabled = false
+	headShape.disabled = false
 	if entity.isGrounded:
-		headShape.disabled = false
 		entity.tween.stop_all()
 		entity.tween.interpolate_property(camera, "transform:origin", camera.transform.origin, camPosCrouch, transitionTime, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		entity.tween.start()
@@ -49,7 +47,6 @@ func enter(data:Dictionary={})->void:
 		entity.transform.origin += (camPos -camPosCrouch)
 
 func exit()->void:
-	isGrounded = true
 	entity.standShape.disabled = false
 	entity.crouchShape.disabled = true
 	headShape.disabled = true
@@ -57,6 +54,10 @@ func exit()->void:
 		entity.tween.stop_all()
 		entity.tween.interpolate_property(camera, "transform:origin", camera.transform.origin, camPos, transitionTime, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		entity.tween.start()
+	else:
+		camera.transform.origin = camPos
+		entity.transform.origin -= (camPos -camPosCrouch)
+	isGrounded = true
 
 func state_check()->void:
 	if entity.btnCrouch || !entity.headCheck.get_overlapping_bodies().empty():

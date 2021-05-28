@@ -10,7 +10,6 @@ export (float) var jumpPower:float = 10.0
 
 export (float) var mouseSensitivity:float = 0.3
 
-
 onready var standShape: = $StandShape
 onready var crouchShape: = $CrouchShape
 onready var headCheck: = $HeadCheck
@@ -85,7 +84,6 @@ func input(event:InputEvent):
 		btnCrouch = event.is_action_pressed("crouch")
 
 
-
 func physics(delta:float)->void:
 	get_dir()
 	get_movement(delta)
@@ -119,22 +117,30 @@ func get_dir()->void:
 	dir = dir.normalized()
 
 func get_movement(delta:float)->void:
+	if isGrounded:
+		get_movement_ground(delta)
+	else:
+		get_movement_air(delta)
+
+func get_movement_ground(delta:float)->void:
 	velocity = velocity.linear_interpolate(dir *spd +(velocity *Vector3.UP), acc *delta)
 
 func get_movement_air(delta:float)->void:
 	velocity = velocity.linear_interpolate(dir *spd +(velocity *Vector3.UP), acc *delta *airControl)
 
 func apply_movement()->void:
-	var tempVelocity: = velocity
-	tempVelocity = move_and_slide_with_snap(velocity +(get_floor_velocity() *vecH), snap, Vector3.UP)
-	#check if standing on moving platform 
-	for i in get_slide_count():
-		var col: = get_slide_collision(i)
-		#don't apply returned velocity
-		if col.collider.collision_layer == 2:
-			velocity.y = 0.0
-			return
-	velocity = tempVelocity
+	velocity = move_and_slide_with_snap(velocity, snap, Vector3.UP)
+#	var tempVelocity: = velocity
+#	#tempVelocity = move_and_slide_with_snap(velocity +(get_floor_velocity() *vecH), snap, Vector3.UP)
+#	#check if standing on moving platform 
+#	for i in get_slide_count():
+#		var col: = get_slide_collision(i)
+#		#don't apply returned velocity
+#		if col.collider.collision_layer == 2:
+#			velocity.y = 0.0
+#			print((get_floor_velocity() *vecH).length())
+#			return
+#	velocity = tempVelocity
 
 func get_gravity(delta:float)->void:
 	if isGrounded:
