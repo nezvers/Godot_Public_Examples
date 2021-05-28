@@ -1,0 +1,245 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Material/Grid.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Grid/Grid_512_Opaque.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Grid/Grid_512.png" type="Texture" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Environments/environment_GLES2.tscn" type="PackedScene" id=5]
+
+[sub_resource type="BoxShape" id=46]
+extents = Vector3( 1, 0.25, 1 )
+
+[sub_resource type="CubeMesh" id=45]
+size = Vector3( 2, 0.5, 2 )
+
+[sub_resource type="SpatialMaterial" id=47]
+albedo_texture = ExtResource( 2 )
+uv1_triplanar = true
+
+[sub_resource type="Animation" id=32]
+resource_name = "move"
+length = 8.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 8, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0, 8, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4, 6, 8 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -0.25, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, -0.25, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4, 6, 8 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4, 6, 8 )
+}
+
+[sub_resource type="GDScript" id=48]
+script/source = "extends Area
+
+var bodyList: = {}
+var bodyArray: = []
+var inTransition: = {}
+onready var prevPos: = global_transform.origin
+
+func _on_Area_body_entered(body):
+#	var parent:Node = body.get_parent()
+#	if parent == self:
+#		return
+#	inTransition[body.name] = body
+#	bodyList[body.name] = parent
+#	var trans:Transform = body.global_transform
+#	var local:Vector3 = body.global_transform.origin -global_transform.origin
+#	parent.remove_child(body)
+#	body.transform.origin = local
+#	add_child(body)
+#	body.global_transform = trans
+## warning-ignore:return_value_discarded
+#	inTransition.erase(body.name)
+	bodyArray.append(body)
+
+
+func _on_Area_body_exited(body):
+#	if inTransition.has(body.name):
+#		return
+#	var trans:Transform = body.global_transform
+#	remove_child(body)
+#	bodyList[body.name].add_child(body)
+#	body.global_transform = trans
+## warning-ignore:return_value_discarded
+#	bodyList.erase(body.name)
+	bodyArray.erase(body)
+
+func _physics_process(_delta:float)->void:
+	var difference:Vector3 = global_transform.origin - prevPos
+	for body in bodyArray:
+		body.global_transform.origin += difference
+	prevPos = global_transform.origin
+
+
+"
+
+[sub_resource type="SpatialMaterial" id=26]
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 100, 100, 1 )
+
+[sub_resource type="PlaneMesh" id=24]
+material = SubResource( 26 )
+size = Vector2( 100, 100 )
+
+[sub_resource type="BoxShape" id=27]
+extents = Vector3( 50, 1, 50 )
+
+[sub_resource type="StreamTexture" id=33]
+flags = 23
+load_path = "res://.import/Grid_128.png-6a1360605de70cc7f3ef2b1e58f2c43d.s3tc.stex"
+
+[sub_resource type="SpatialMaterial" id=34]
+albedo_texture = SubResource( 33 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=35]
+material = SubResource( 34 )
+size = Vector3( 5, 0.5, 2 )
+
+[sub_resource type="BoxShape" id=36]
+extents = Vector3( 2.5, 0.25, 1 )
+
+[sub_resource type="CubeMesh" id=37]
+size = Vector3( 8, 0.5, 2 )
+
+[sub_resource type="BoxShape" id=38]
+extents = Vector3( 4, 0.25, 1 )
+
+[sub_resource type="CubeMesh" id=39]
+size = Vector3( 20, 8, 0.5 )
+
+[sub_resource type="BoxShape" id=40]
+extents = Vector3( 10, 4, 0.25 )
+
+[sub_resource type="CubeMesh" id=41]
+size = Vector3( 20, 8, 0.5 )
+
+[sub_resource type="BoxShape" id=42]
+extents = Vector3( 10, 4, 0.25 )
+
+[sub_resource type="CubeMesh" id=43]
+size = Vector3( 5, 6, 0.5 )
+
+[sub_resource type="BoxShape" id=44]
+extents = Vector3( 2.5, 3, 0.25 )
+
+[node name="Level" type="Spatial"]
+
+[node name="environment" parent="." instance=ExtResource( 5 )]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65674, 3.47176, 0 )
+
+[node name="MovingPlatform" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.25, 0.5 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="MovingPlatform"]
+shape = SubResource( 46 )
+
+[node name="SolidKinematic" type="MeshInstance" parent="MovingPlatform"]
+mesh = SubResource( 45 )
+material/0 = SubResource( 47 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform"]
+autoplay = "move"
+anims/move = SubResource( 32 )
+
+[node name="Area" type="Area" parent="MovingPlatform"]
+collision_layer = 0
+collision_mask = 4
+script = SubResource( 48 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="MovingPlatform/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
+shape = SubResource( 46 )
+
+[node name="Solids" type="Spatial" parent="."]
+
+[node name="plane" type="MeshInstance" parent="Solids"]
+mesh = SubResource( 24 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Solids/plane"]
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Solids/plane/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+shape = SubResource( 27 )
+
+[node name="Solid" type="MeshInstance" parent="Solids"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0.5 )
+mesh = SubResource( 35 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Solids/Solid"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Solids/Solid/StaticBody"]
+shape = SubResource( 36 )
+
+[node name="Solid2" type="MeshInstance" parent="Solids"]
+transform = Transform( 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0, 1, -5.519, 1.333, 0.503 )
+mesh = SubResource( 37 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Solids/Solid2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Solids/Solid2/StaticBody"]
+shape = SubResource( 38 )
+
+[node name="Solid3" type="MeshInstance" parent="Solids"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 4, -6 )
+mesh = SubResource( 39 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Solids/Solid3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Solids/Solid3/StaticBody"]
+shape = SubResource( 40 )
+
+[node name="Solid4" type="MeshInstance" parent="Solids"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 8, -1 )
+mesh = SubResource( 41 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Solids/Solid4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Solids/Solid4/StaticBody"]
+shape = SubResource( 42 )
+
+[node name="Solid5" type="MeshInstance" parent="Solids"]
+transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -25.25, 5, -3.25 )
+mesh = SubResource( 43 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Solids/Solid5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Solids/Solid5/StaticBody"]
+shape = SubResource( 44 )
+
+[connection signal="body_entered" from="MovingPlatform/Area" to="MovingPlatform/Area" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="MovingPlatform/Area" to="MovingPlatform/Area" method="_on_Area_body_exited"]
