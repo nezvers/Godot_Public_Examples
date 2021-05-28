@@ -130,17 +130,6 @@ func get_movement_air(delta:float)->void:
 
 func apply_movement()->void:
 	velocity = move_and_slide_with_snap(velocity, snap, Vector3.UP)
-#	var tempVelocity: = velocity
-#	#tempVelocity = move_and_slide_with_snap(velocity +(get_floor_velocity() *vecH), snap, Vector3.UP)
-#	#check if standing on moving platform 
-#	for i in get_slide_count():
-#		var col: = get_slide_collision(i)
-#		#don't apply returned velocity
-#		if col.collider.collision_layer == 2:
-#			velocity.y = 0.0
-#			print((get_floor_velocity() *vecH).length())
-#			return
-#	velocity = tempVelocity
 
 func get_gravity(delta:float)->void:
 	if isGrounded:
@@ -221,7 +210,9 @@ func ground_check()->void:
 
 
 func jumping_event()->void:
+	# trigger sound
 	pass
 
 func landing_event()->void:
+	# trigger sound
 	pass
