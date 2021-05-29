@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Camera.gd" type="Script" id=2]
-[ext_resource path="res://utility/statemachine/StateMachine.gd" type="Script" id=3]
+[ext_resource path="res://Utility/StateMachine/StateMachine.gd" type="Script" id=3]
 [ext_resource path="res://Player/States/StateIdle.gd" type="Script" id=4]
 [ext_resource path="res://Player/States/StateRun.gd" type="Script" id=5]
 [ext_resource path="res://Player/States/StateWalk.gd" type="Script" id=6]
