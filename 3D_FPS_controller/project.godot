@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://utility/statemachine/State.gd"
+"path": "res://Utility/StateMachine/State.gd"
 }, {
 "base": "State",
 "class": "StateCrouch",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://utility/statemachine/StateMachine.gd"
+"path": "res://Utility/StateMachine/StateMachine.gd"
 }, {
 "base": "StateGrounded",
 "class": "StateRun",

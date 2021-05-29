@@ -190,7 +190,7 @@ func get_gravity_air(delta:float)->void:
 
 
 func set_jump()->void:
-	velocity.y = jumpPower
+	velocity.y = max(jumpPower, velocity.y +jumpPower)
 	isJumping = true
 	isGrounded = false
 	floorNormal = Vector3.UP
