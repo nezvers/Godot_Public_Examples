@@ -16,4 +16,3 @@ mono_crash.*.json
 .directory
 *~
 *.import
-*.import
