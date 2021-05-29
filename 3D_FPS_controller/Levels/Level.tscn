@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Material/Grid.tres" type="Material" id=1]
 [ext_resource path="res://Assets/Grid/Grid_512_Opaque.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Grid/Grid_512.png" type="Texture" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Environments/environment_GLES2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/MovingPlatformArea.tres.gd" type="Script" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 0.25, 1 )
@@ -51,76 +52,57 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 2, 4, 6, 8 )
 }
 
-[sub_resource type="GDScript" id=5]
-script/source = "extends Area
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 0.9, 0.25, 0.9 )
 
-var bodyArray: = []
-onready var prevPos: = global_transform.origin
-
-func _on_Area_body_entered(body):
-	bodyArray.append(body)
-
-
-func _on_Area_body_exited(body):
-	bodyArray.erase(body)
-
-func _physics_process(_delta:float)->void:
-	var difference:Vector3 = global_transform.origin - prevPos
-	for body in bodyArray:
-		body.global_transform.origin += difference
-	prevPos = global_transform.origin
-
-
-"
-
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 100, 100, 1 )
 
-[sub_resource type="PlaneMesh" id=7]
-material = SubResource( 6 )
+[sub_resource type="PlaneMesh" id=6]
+material = SubResource( 5 )
 size = Vector2( 100, 100 )
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=7]
 extents = Vector3( 50, 1, 50 )
 
-[sub_resource type="StreamTexture" id=9]
+[sub_resource type="StreamTexture" id=8]
 flags = 23
 load_path = "res://.import/Grid_128.png-6a1360605de70cc7f3ef2b1e58f2c43d.s3tc.stex"
 
-[sub_resource type="SpatialMaterial" id=10]
-albedo_texture = SubResource( 9 )
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = SubResource( 8 )
 uv1_triplanar = true
 
-[sub_resource type="CubeMesh" id=11]
-material = SubResource( 10 )
+[sub_resource type="CubeMesh" id=10]
+material = SubResource( 9 )
 size = Vector3( 5, 0.5, 2 )
 
-[sub_resource type="BoxShape" id=12]
+[sub_resource type="BoxShape" id=11]
 extents = Vector3( 2.5, 0.25, 1 )
 
-[sub_resource type="CubeMesh" id=13]
+[sub_resource type="CubeMesh" id=12]
 size = Vector3( 8, 0.5, 2 )
 
-[sub_resource type="BoxShape" id=14]
+[sub_resource type="BoxShape" id=13]
 extents = Vector3( 4, 0.25, 1 )
 
-[sub_resource type="CubeMesh" id=15]
+[sub_resource type="CubeMesh" id=14]
 size = Vector3( 20, 8, 0.5 )
 
-[sub_resource type="BoxShape" id=16]
+[sub_resource type="BoxShape" id=15]
 extents = Vector3( 10, 4, 0.25 )
 
-[sub_resource type="CubeMesh" id=17]
+[sub_resource type="CubeMesh" id=16]
 size = Vector3( 20, 8, 0.5 )
 
-[sub_resource type="BoxShape" id=18]
+[sub_resource type="BoxShape" id=17]
 extents = Vector3( 10, 4, 0.25 )
 
-[sub_resource type="CubeMesh" id=19]
+[sub_resource type="CubeMesh" id=18]
 size = Vector3( 5, 6, 0.5 )
 
-[sub_resource type="BoxShape" id=20]
+[sub_resource type="BoxShape" id=19]
 extents = Vector3( 2.5, 3, 0.25 )
 
 [node name="Level" type="Spatial"]
@@ -149,16 +131,16 @@ anims/move = SubResource( 4 )
 [node name="Area" type="Area" parent="MovingPlatform"]
 collision_layer = 0
 collision_mask = 4
-script = SubResource( 5 )
+script = ExtResource( 6 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="MovingPlatform/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 20 )
 
 [node name="Solids" type="Spatial" parent="."]
 
 [node name="plane" type="MeshInstance" parent="Solids"]
-mesh = SubResource( 7 )
+mesh = SubResource( 6 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Solids/plane"]
@@ -166,57 +148,54 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Solids/plane/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="Solid" type="MeshInstance" parent="Solids"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0.5 )
-mesh = SubResource( 11 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Solids/Solid"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Solids/Solid/StaticBody"]
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="Solid2" type="MeshInstance" parent="Solids"]
 transform = Transform( 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0, 1, -5.519, 1.333, 0.503 )
-mesh = SubResource( 13 )
+mesh = SubResource( 12 )
 material/0 = ExtResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="Solids/Solid2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Solids/Solid2/StaticBody"]
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 
 [node name="Solid3" type="MeshInstance" parent="Solids"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 4, -6 )
-mesh = SubResource( 15 )
+mesh = SubResource( 14 )
 material/0 = ExtResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="Solids/Solid3"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Solids/Solid3/StaticBody"]
-shape = SubResource( 16 )
+shape = SubResource( 15 )
 
 [node name="Solid4" type="MeshInstance" parent="Solids"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 8, -1 )
-mesh = SubResource( 17 )
+mesh = SubResource( 16 )
 material/0 = ExtResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="Solids/Solid4"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Solids/Solid4/StaticBody"]
-shape = SubResource( 18 )
+shape = SubResource( 17 )
 
 [node name="Solid5" type="MeshInstance" parent="Solids"]
 transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -25.25, 5, -3.25 )
-mesh = SubResource( 19 )
+mesh = SubResource( 18 )
 material/0 = ExtResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="Solids/Solid5"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Solids/Solid5/StaticBody"]
-shape = SubResource( 20 )
-
-[connection signal="body_entered" from="MovingPlatform/Area" to="MovingPlatform/Area" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="MovingPlatform/Area" to="MovingPlatform/Area" method="_on_Area_body_exited"]
+shape = SubResource( 19 )

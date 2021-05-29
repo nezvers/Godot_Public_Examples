@@ -2,14 +2,6 @@ extends StateGrounded
 class_name StateRun
 
 
-
-# warning-ignore:unused_argument
-func enter(data:Dictionary={})->void:
-	entity.spd = entity.runSpd
-
-func exit()->void:
-	pass
-
 func state_check()->void:
 	if ground_state_check():
 		return
@@ -21,3 +13,8 @@ func state_check()->void:
 		sm.transition("Idle")
 	elif !entity.btnRun:
 			sm.transition("Walk")
+
+
+# warning-ignore:unused_argument
+func enter(data:Dictionary = {} )->void:
+	entity.spd = entity.runSpd

@@ -2,18 +2,20 @@ extends State
 class_name StateJump
 
 
+# warning-ignore:unused_argument
+func input(event:InputEvent)->void:
+	entity.input(event)
+
 
 # warning-ignore:unused_argument
 func process(delta:float)->void:
 	state_check()
 
+
 # warning-ignore:unused_argument
 func physics(delta:float)->void:
 	entity.physics_air(delta)
 
-# warning-ignore:unused_argument
-func input(event:InputEvent)->void:
-	entity.input(event)
 
 func state_check()->void:
 	if entity.isGrounded:

@@ -64,18 +64,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66445, 0 )
 cull_mask = 3
 script = ExtResource( 2 )
 
-[node name="RightRay" type="RayCast" parent="Body"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
-cast_to = Vector3( 0.5, 0, 0 )
-
-[node name="LeftRay" type="RayCast" parent="Body"]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.5, 0 )
-cast_to = Vector3( 0.5, 0, 0 )
-
-[node name="FrontRay" type="RayCast" parent="Body"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, -0.4 )
-cast_to = Vector3( 0, -1.116, 0 )
-
 [node name="JumpBuffer" type="Timer" parent="."]
 wait_time = 0.17
 one_shot = true
