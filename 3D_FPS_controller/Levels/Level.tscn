@@ -120,7 +120,7 @@ collision_mask = 2
 [node name="CollisionShape" type="CollisionShape" parent="MovingPlatform"]
 shape = SubResource( 1 )
 
-[node name="SolidKinematic" type="MeshInstance" parent="MovingPlatform"]
+[node name="Mesh" type="MeshInstance" parent="MovingPlatform"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
