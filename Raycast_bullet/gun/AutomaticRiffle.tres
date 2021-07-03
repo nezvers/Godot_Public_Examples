@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://gun/GunConfig.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+speed = 10000.0
+speed_fall = 15.0
+fade_time = 0.5
+life_time = 0.2
+bounces = 1
+bullet_count = 1
+bullet_spread = 0.0
+interval = 0.1
+random_spread = 0.2
+bullet_type = 0

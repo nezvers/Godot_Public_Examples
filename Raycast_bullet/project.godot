@@ -9,24 +9,36 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Position2D",
+"class": "Gun",
+"language": "GDScript",
+"path": "res://gun/Gun.gd"
+}, {
+"base": "Resource",
+"class": "GunConfig",
+"language": "GDScript",
+"path": "res://gun/GunConfig.gd"
+}, {
 "base": "Node2D",
 "class": "RaycastBullet",
 "language": "GDScript",
-"path": "res://RaycastBullet.gd"
+"path": "res://bullet/RaycastBullet.gd"
 } ]
 _global_script_class_icons={
+"Gun": "",
+"GunConfig": "",
 "RaycastBullet": ""
 }
 
 [application]
 
 config/name="Ricochet_bullet"
-run/main_scene="res://Level.tscn"
+run/main_scene="res://level/Level.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Events="*res://Events.gd"
+Events="*res://autoload/Events.gd"
 
 [display]
 
@@ -62,6 +74,21 @@ move_up={
 move_down={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+weapon_1={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":49,"unicode":0,"echo":false,"script":null)
+ ]
+}
+weapon_2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":50,"unicode":0,"echo":false,"script":null)
+ ]
+}
+weapon_3={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":51,"unicode":0,"echo":false,"script":null)
  ]
 }
 
