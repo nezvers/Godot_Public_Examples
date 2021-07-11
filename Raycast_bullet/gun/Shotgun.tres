@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource( 1 )
 speed = 4800.0
-speed_fall = 15.0
+speed_fall = 20.0
 fade_time = 0.5
-life_time = 0.2
-bounces = 2
+life_time = 0.3
+bounces = 1
 bullet_count = 5
 bullet_spread = 15.0
 interval = 0.4

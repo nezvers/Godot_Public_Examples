@@ -14,7 +14,8 @@ var rot: float
 
 var trace_line: Array
 var time:float
-var col: = Color.white
+var col1: = Color.white
+var col2: = Color(0.0, 0.0, 0.0, 0.0)
 
 func set_config(config:GunConfig)->void:
 	speed = config.speed
@@ -28,11 +29,11 @@ func _draw()->void:
 		for i in trace_line.size() -1:
 			var t:float = (time - trace_line[i][1]) / fade_time
 			if t <= 1.0:
-				var c: = col
-				c.a = 1.0 - t
+				var c: = col2.linear_interpolate(col1, 1.0-t)
 				var p1:Vector2 = trace_line[i][0]
 				var p2:Vector2 = trace_line[i+1][0]
-				draw_line(p1, p2, c)
+				var thic:float = clamp(4 * (1.0-t*5.0), 1.0, 10.0)
+				draw_line(p1, p2, c, thic)
 
 func _physics_process(delta:float)->void:
 	if bounces > 0 && time < life_time && speed > 0.001:
