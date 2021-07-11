@@ -2,7 +2,7 @@ tool
 extends VBoxContainer
 
 export (bool) var cut:bool = false setget set_cut
-export (BitmapFont) var font:BitmapFont
+export (BitmapFont) var font:BitmapFont		# Result gets saved into it (save updated font)
 export (Vector2) var glyphSize:Vector2 = Vector2(16,16) # include space to the right and bellow
 export (String) var symbolsInTexture:String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 .,:;()?!"
 #include space symbol too
