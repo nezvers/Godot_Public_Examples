@@ -18,24 +18,24 @@ onready var jumpBuffer:     = $JumpBuffer
 onready var tween:          = $Tween
 onready var sm:             = $StateMachine
 
-var acc:                = accDefault			#	Acceleration
-var velocity:           = Vector3.ZERO			#	Movement velocity
-var spd:                = runSpd				#	Speed to reach
-var gravMult:           = 1.0					#	Gravity manipulation
-var dir:                = Vector3.ZERO			#	Movement direction
-var floorNormal:        = Vector3.UP			#	Influence snap and gravity direction
-var jumpRelease:float   = jumpPower *0.5		#	Limit jump speed after btnJump release
-var extraJumps:         = 1						#	Maximum of extra jumps
-var jumpCount:          = 0						#	Extra jump counter
-var camRotX:            = 0.0					#	Vertical angle for camera
-var mouseCaptured:      = false					#	Check if need to listen to mouse
+var acc:                = accDefault            #	Acceleration
+var velocity:           = Vector3.ZERO          #	Movement velocity
+var spd:                = runSpd                #	Speed to reach
+var gravMult:           = 1.0                   #	Gravity manipulation
+var dir:                = Vector3.ZERO          #	Movement direction
+var floorNormal:        = Vector3.UP            #	Influence snap and gravity direction
+var jumpRelease:float   = jumpPower *0.5        #	Limit jump speed after btnJump release
+var extraJumps:         = 1                     #	Maximum of extra jumps
+var jumpCount:          = 0                     #	Extra jump counter
+var camRotX:            = 0.0                   #	Vertical angle for camera
+var mouseCaptured:      = false                 #	Check if need to listen to mouse
 
-const vecH:         = Vector3(1.0,0.0,1.0)		#	Used to nullify Y axis in with multiplication
-const snapLength:   = 0.2						#	How far snapping will work
-var snap:           = Vector3.ZERO				#	Current snapping. In air Vector3.ZERO
+const vecH:         = Vector3(1.0,0.0,1.0)      #	Used to nullify Y axis in with multiplication
+const snapLength:   = 0.2                       #	How far snapping will work
+var snap:           = Vector3.ZERO              #	Current snapping. In air Vector3.ZERO
 
-var isGrounded: = false							#	Local variable for grounded state
-var isJumping:  = false							#	Player wanted state. Combining with btnJump allows jump cancellation and jump buffer before landing
+var isGrounded: = false                         #	Local variable for grounded state
+var isJumping:  = false                         #	Player wanted state. Combining with btnJump allows jump cancellation and jump buffer before landing
 
 var btnRight:float
 var btnLeft:float
