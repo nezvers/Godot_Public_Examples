@@ -1,10 +1,10 @@
 extends KinematicBody2D
 class_name Actor
 
-export (float) var speed: 			= 1.0 * 60.0
+export (float) var speed:               = 1.0 * 60.0
 export (float) var acceleration:	= 300.0
 export (float) var air_acceleration:	= 100.0
-export (float) var gravity:			= 4.8 * 60
+export (float) var gravity:             = 4.8 * 60
 export (float) var jump_impulse:	= -180.0
 
 
@@ -15,11 +15,11 @@ var move_down:		= 0.0
 var direction:		= Vector2.ZERO
 var velocity:		= Vector2.ZERO
 var jump_release:	= jump_impulse * 0.2
-var jump:			= false
+var jump:               = false
 var is_jumping:		= false
 var is_grounded:	= false
 const SNAP: 		= Vector2.DOWN * 1
-var snap:			= Vector2.ZERO
+var snap:               = Vector2.ZERO
 
 var max_jump:int	= 1
 var jump_count:int	= 0
