@@ -7,6 +7,11 @@ onready var label: = $CanvasLayer/Label
 var createdPackage:PackedScene
 var packageInstance:Node
 
+
+func _ready()->void:
+	OS.center_window()
+
+
 func Randomize_pressed():
 	original.modulate = Color(randf(), randf(), randf(), 1.0)
 	for child in original.get_children():

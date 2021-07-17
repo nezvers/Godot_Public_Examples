@@ -93,7 +93,7 @@ scale = Vector2( 1, 0.229 )
 texture = ExtResource( 1 )
 
 [node name="CloneParent" type="Node2D" parent="."]
-position = Vector2( 678.342, 302.393 )
+position = Vector2( 372.811, 315.622 )
 
 [connection signal="pressed" from="CanvasLayer/Randomize" to="." method="Randomize_pressed"]
 [connection signal="pressed" from="CanvasLayer/Package" to="." method="Package_pressed"]
