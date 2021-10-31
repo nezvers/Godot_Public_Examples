@@ -21,7 +21,7 @@ position = Vector2( 0, 10 )
 scale = Vector2( 1, 16 )
 
 [node name="Solid4" parent="Node2D" instance=ExtResource( 1 )]
-position = Vector2( 313, -1.90735e-006 )
+position = Vector2( 313, -1.90735e-06 )
 rotation = 0.0174533
 scale = Vector2( 2, 18 )
 

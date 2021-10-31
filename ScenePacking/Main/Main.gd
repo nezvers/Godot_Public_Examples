@@ -1,6 +1,5 @@
 extends Node2D
 
-const saveFile: = "res://SavedPackage.tscn" #or .scn for binary version
 onready var original: = $Original/icon
 onready var cloneParent: = $CloneParent
 onready var label: = $CanvasLayer/Label
@@ -12,6 +11,7 @@ func _ready()->void:
 	OS.center_window()
 
 
+const saveFile: = "res://SavedPackage.tscn" #or .scn for binary version
 func Randomize_pressed():
 	original.modulate = Color(randf(), randf(), randf(), 1.0)
 	for child in original.get_children():

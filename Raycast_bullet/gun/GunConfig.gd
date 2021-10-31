@@ -15,3 +15,5 @@ export (float) var interval: float = 0.2
 export (float) var random_spread:float = PI * 0.01
 
 export (bullet) var bullet_type:int
+
+export (float) var kickStrength:float = 0.5 * 60;

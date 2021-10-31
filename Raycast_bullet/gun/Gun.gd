@@ -22,34 +22,38 @@ func _ready()->void:
 	timer.connect("timeout", self, "timeout")
 
 func _unhandled_input(event:InputEvent)->void:
-	if event.is_action_pressed("click"):
-		if shooting:
-			return
-		shooting = true
-		spawn_bullets()
-	elif event.is_action_released("click"):
-		shooting = false
-		timer.stop()
-	elif event.is_action_pressed("weapon_1"):
+	if event.is_action_pressed("weapon_1"):
 		gun_index = 0
 	elif event.is_action_pressed("weapon_2"):
 		gun_index = 1
 	elif event.is_action_pressed("weapon_3"):
 		gun_index = 2
 
+func set_shooting(value: bool)->void:
+	if value && !shooting:
+		shooting = true
+		spawn_bullets()
+	if !value:
+		shooting = false
+		timer.stop()
+
 func spawn_bullets()->void:
 	var config:GunConfig = gunList[gun_index]
 	timer.start(config.interval)
 	var scene:PackedScene = bulletList[config.bullet_type]
+	var kick: = Vector2.ZERO
 	var angle:float = 0.0
 	if config.bullet_count > 1:
 		angle = deg2rad(config.bullet_spread) / (config.bullet_count -1)
 	for i in config.bullet_count:
 		var rad:float = angle * i - deg2rad(config.bullet_spread) * 0.5
 		rad += config.random_spread * randf() - config.random_spread * 0.5
-		var basisX: = global_transform.x.rotated(rad)
+		var basisX: Vector2 = global_transform.x.rotated(rad)
 		Events.emit_signal("spawn_bullet", scene, config, global_position, basisX, global_rotation + rad)
+		kick += basisX
+	owner.velocity -= kick.normalized() * config.kickStrength * config.bullet_count
 
 func timeout()->void:
 	if shooting:
 		spawn_bullets()
+		

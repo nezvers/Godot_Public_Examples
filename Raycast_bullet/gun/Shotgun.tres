@@ -14,3 +14,4 @@ bullet_spread = 15.0
 interval = 0.4
 random_spread = 0.2
 bullet_type = 0
+kickStrength = 30.0

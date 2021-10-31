@@ -57,10 +57,16 @@ func _bullet_process(delta:float)->void:
 		end = pos + dir * remainLength
 		data = spaceState.intersect_ray(pos, end)
 		if data:
-			end = data.position - (data.position - pos).normalized() * 0.01
-			dir = dir.bounce(data.normal).normalized()
-			bounces -= 1
-			#data.collider
+			if data.collider is KinematicBody2D:
+				# register hit
+				
+				data.collider.get_hit({dir = dir})
+				end = data.position - (data.position - pos).normalized() * 0.01
+				bounces = 0
+			else:
+				end = data.position - (data.position - pos).normalized() * 0.01
+				dir = dir.bounce(data.normal).normalized()
+				bounces -= 1
 		remainLength -= (end - pos).length()
 		pos = end
 		trace_line.append([pos, time])
