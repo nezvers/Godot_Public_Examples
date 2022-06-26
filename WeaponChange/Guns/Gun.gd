@@ -47,6 +47,7 @@ func shoot()->void:
 		var bullet:Area2D = bullet_scene.instance()
 		bullet.spawner = owner										#Add player as spawner
 		bullet.rotation_degrees += angle
+		bullet.global_position = global_position
 		add_child(bullet)											#smarter way is to signal to level for parenting somewhere else
 	anim.play("Shoot")
 	sound.play()
