@@ -5,7 +5,7 @@ onready var tilemap: = $TileMap
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed && event.button_index == 1:	#pressed left mouse button
-			#Explosion.new(tilemap, get_global_mouse_position())
+			#Explosion.trigger(tilemap, get_global_mouse_position())
 			random_explosions()
 	elif event.is_action_pressed("ui_cancel"):
 # warning-ignore:return_value_discarded
