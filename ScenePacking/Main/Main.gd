@@ -49,3 +49,21 @@ func Save_pressed():
 	
 
 
+
+
+func _on_Load_pressed():
+	var path = saveFile;
+
+	# Instance as child:
+	var scene_resource = load(path)
+	#var scene = scene_resource.instance()
+	#parent_node.add_child(scene)
+
+	# Or, load as complete replacement of current scene:
+	#get_tree().change_scene(path)
+	if packageInstance:
+		packageInstance.queue_free()
+	packageInstance = scene_resource.instance()
+	cloneParent.add_child(packageInstance)
+	label.text = "Instance loaded"
+	pass
