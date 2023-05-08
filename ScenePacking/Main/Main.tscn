@@ -34,9 +34,6 @@ margin_top = 109.0
 margin_right = 332.0
 margin_bottom = 129.0
 text = "Instance"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Save" type="Button" parent="CanvasLayer"]
 margin_left = 421.0
@@ -47,6 +44,13 @@ text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Load" type="Button" parent="CanvasLayer"]
+margin_left = 421.0
+margin_top = 109.0
+margin_right = 504.0
+margin_bottom = 129.0
+text = "Load"
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 margin_left = 80.5
@@ -99,3 +103,4 @@ position = Vector2( 372.811, 315.622 )
 [connection signal="pressed" from="CanvasLayer/Package" to="." method="Package_pressed"]
 [connection signal="pressed" from="CanvasLayer/Instance" to="." method="Instance_pressed"]
 [connection signal="pressed" from="CanvasLayer/Save" to="." method="Save_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load" to="." method="_on_Load_pressed"]
