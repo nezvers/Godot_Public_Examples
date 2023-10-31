@@ -1,0 +1,6 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1698753955
+default_env.tres::Environment::-1::1698753949::0::1::::<><>::
+Scene.tscn::PackedScene::-1::1698753949::0::1::::<><>::res://Verlet.tscn
+string.gd::GDScript::-1::1698753949::0::1::::<>Node2D<>::
+Verlet.tscn::PackedScene::-1::1698753949::0::1::::<><>::res://string.gd
