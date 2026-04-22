@@ -14,9 +14,14 @@ func set_is_pushed(value:bool)->void:
 		return
 	is_pushed = value
 	is_push_changed.emit(value)
+	queue_redraw()
 	print(name, ": is_pushed = ", value)
 
 func push(impulse:Vector2)->void:
 	linear_velocity = impulse
 	got_push.emit(impulse)
 	set_is_pushed(true)
+
+func _draw()->void:
+	if is_pushed:
+		draw_circle(Vector2.ZERO, 33, Color.WHITE)

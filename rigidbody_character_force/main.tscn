@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dc1s8orbmtv6f" path="res://player/input_impulse.gd" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://b46r1ts4t7cpm" path="res://utils/gravity.gd" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://fdmfk7kuv2yi" path="res://body/body.tscn" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://b84t0xd7r6sev" path="res://enemies/enemy_stalking.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://cdtbfugurdgc6" path="res://player/player_input.gd" id="5_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
@@ -48,6 +49,18 @@ color = Color(0.0022071032, 0, 0.1197023, 1)
 
 [node name="NPC" parent="." unique_id=981984537 instance=ExtResource("3_lquwl")]
 position = Vector2(613, 306)
+
+[node name="WalkVelocity" parent="NPC" index="3" unique_id=2050126848]
+walk_speed = 200.0
+acceleration = 1000.0
+deacceleration = 400.0
+push_resist = 200.0
+
+[node name="EnemyStalking" type="Node" parent="NPC" unique_id=1195574143 node_paths=PackedStringArray("walk_velocity", "player_body", "body")]
+script = ExtResource("5_272bh")
+walk_velocity = NodePath("../WalkVelocity")
+player_body = NodePath("../../Player")
+body = NodePath("..")
 
 [node name="Player" parent="." unique_id=2126218870 instance=ExtResource("3_lquwl")]
 position = Vector2(424, 461)
