@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ckkh5qsrqa7gq"]
+
+[ext_resource type="Script" uid="uid://dw8f6otptro46" path="res://utils/restart.gd" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://cx81h0grd8w7v" path="res://utils/DrawCollisionShape2D.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dc1s8orbmtv6f" path="res://player/input_impulse.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://b46r1ts4t7cpm" path="res://utils/gravity.gd" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://fdmfk7kuv2yi" path="res://body/body.tscn" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://cdtbfugurdgc6" path="res://player/player_input.gd" id="5_lquwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(1216, 63)
+
+[node name="Main" type="Node2D" unique_id=649157611]
+
+[node name="Restart" type="Node" parent="." unique_id=633825789]
+script = ExtResource("1_1bvp3")
+
+[node name="Gravity" type="Node" parent="." unique_id=1004908434]
+script = ExtResource("2_7mycd")
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=366999582]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=1078793878]
+position = Vector2(580, 0)
+shape = SubResource("RectangleShape2D_0xm2m")
+script = ExtResource("1_ig7tw")
+color = Color(0.0022071032, 0, 0.1197023, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" unique_id=1680200897]
+position = Vector2(580, 654)
+shape = SubResource("RectangleShape2D_0xm2m")
+script = ExtResource("1_ig7tw")
+color = Color(0.0022071032, 0, 0.1197023, 1)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls" unique_id=371349425]
+position = Vector2(0, 350)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_0xm2m")
+script = ExtResource("1_ig7tw")
+color = Color(0.0022071032, 0, 0.1197023, 1)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls" unique_id=1532178171]
+position = Vector2(1151, 350)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_0xm2m")
+script = ExtResource("1_ig7tw")
+color = Color(0.0022071032, 0, 0.1197023, 1)
+
+[node name="NPC" parent="." unique_id=981984537 instance=ExtResource("3_lquwl")]
+position = Vector2(613, 306)
+
+[node name="Player" parent="." unique_id=2126218870 instance=ExtResource("3_lquwl")]
+position = Vector2(424, 461)
+
+[node name="CollisionShape2D" parent="Player" index="0" unique_id=2006145308]
+color = Color(0.36, 1, 0.552, 1)
+
+[node name="InputImpulse" type="Node" parent="Player" unique_id=418553157 node_paths=PackedStringArray("body")]
+script = ExtResource("2_0xm2m")
+body = NodePath("..")
+
+[node name="PlayerInput" type="Node" parent="Player" unique_id=1433250300 node_paths=PackedStringArray("walk_velocity")]
+script = ExtResource("5_lquwl")
+walk_velocity = NodePath("../WalkVelocity")
+
+[editable path="NPC"]
+[editable path="Player"]

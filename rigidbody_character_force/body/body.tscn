@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://fdmfk7kuv2yi"]
+
+[ext_resource type="Script" uid="uid://cx81h0grd8w7v" path="res://utils/DrawCollisionShape2D.gd" id="1_g2rrn"]
+[ext_resource type="Script" uid="uid://b4k3gnkgds4mp" path="res://body/body.gd" id="1_vpsov"]
+[ext_resource type="Script" uid="uid://mh6ovopwfimv" path="res://body/force_transfer.gd" id="2_vpsov"]
+[ext_resource type="Script" uid="uid://klxu0kfup0lw" path="res://body/push_watcher.gd" id="4_pbwhm"]
+[ext_resource type="Script" uid="uid://d1epqw1pf8qe3" path="res://body/walk_velocity.gd" id="5_3eecm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2yge"]
+radius = 30.0
+
+[node name="Body" type="RigidBody2D" unique_id=981984537]
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 9
+angular_damp = 100.0
+script = ExtResource("1_vpsov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2006145308]
+shape = SubResource("CircleShape2D_h2yge")
+script = ExtResource("1_g2rrn")
+color = Color(1, 0.3647059, 1, 1)
+
+[node name="ForceTransfer" type="Node" parent="." unique_id=347171025 node_paths=PackedStringArray("body")]
+script = ExtResource("2_vpsov")
+body = NodePath("..")
+
+[node name="PushWatcher" type="Node" parent="." unique_id=509883071 node_paths=PackedStringArray("body")]
+script = ExtResource("4_pbwhm")
+body = NodePath("..")
+
+[node name="WalkVelocity" type="Node" parent="." unique_id=2050126848 node_paths=PackedStringArray("body")]
+script = ExtResource("5_3eecm")
+body = NodePath("..")
