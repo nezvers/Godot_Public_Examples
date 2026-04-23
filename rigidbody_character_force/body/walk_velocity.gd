@@ -7,19 +7,23 @@ extends Node
 @export var deacceleration:float = 500
 @export var push_resist:float = 500
 @export var move_dir:Vector2
-
+@export var gravity_mult:float = 1
 
 func _physics_process(delta: float) -> void:
 	if body.is_pushed:
-		speed_down(push_resist * delta)
+		speed_change(delta, push_resist, 0, Vector2.ZERO)
+		#speed_down(push_resist * delta)
 		return
 	if move_dir.length_squared() > 0.01:
-		speed_up(acceleration * delta, walk_speed, move_dir.normalized(), delta)
+		speed_change(delta, acceleration, walk_speed, move_dir.normalized())
 	else:
-		speed_down(deacceleration * delta)
+		speed_change(delta, deacceleration, 0, Vector2.ZERO)
+		#speed_down(deacceleration * delta)
 
-func speed_up(strength:float, target_speed:float, dir:Vector2, delta:float)->void:
-	var target_velocity:Vector2 = target_speed * dir
+func speed_change(delta:float, strength:float, target_speed:float, dir:Vector2)->void:
+	strength *= delta
+	# TODO: gravity multiply
+	var target_velocity:Vector2 = target_speed * dir + Gravity.velocity * gravity_mult
 	var current_velocity:Vector2 = body.linear_velocity
 	var diff_velocity:Vector2 = target_velocity - current_velocity
 	var diff_len:float = (target_velocity - diff_velocity).length_squared()

@@ -25,10 +25,11 @@ color = Color(1, 0.3647059, 1, 1)
 script = ExtResource("2_vpsov")
 body = NodePath("..")
 
-[node name="PushWatcher" type="Node" parent="." unique_id=509883071 node_paths=PackedStringArray("body")]
-script = ExtResource("4_pbwhm")
-body = NodePath("..")
-
 [node name="WalkVelocity" type="Node" parent="." unique_id=2050126848 node_paths=PackedStringArray("body")]
 script = ExtResource("5_3eecm")
 body = NodePath("..")
+
+[node name="PushWatcher" type="Node" parent="." unique_id=509883071 node_paths=PackedStringArray("body", "walk_velocity")]
+script = ExtResource("4_pbwhm")
+body = NodePath("..")
+walk_velocity = NodePath("../WalkVelocity")
